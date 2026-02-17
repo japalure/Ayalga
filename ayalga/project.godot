@@ -11,8 +11,8 @@ config_version=5
 [application]
 
 config/name="Ayalga"
-run/main_scene="uid://mh0pqa4hf11a"
-config/features=PackedStringArray("4.5", "GL Compatibility")
+run/main_scene="res://Escenas/Interfaz/EscenaPrincipal.tscn"
+config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [display]

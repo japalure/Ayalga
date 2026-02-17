@@ -10,7 +10,7 @@ anchors_preset = 0
 layout_mode = 0
 offset_right = 1280.0
 offset_bottom = 720.0
-color = Color(0.4454344, 6.324381e-05, 0.4016713, 1)
+color = Color(0.445434, 6.32438e-05, 0.401671, 1)
 
 [node name="PanelIzq" type="PanelContainer" parent="."]
 custom_minimum_size = Vector2(330, 720)
