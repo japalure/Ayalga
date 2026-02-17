@@ -1,0 +1,92 @@
+[gd_resource type="SpriteFrames" load_steps=10 format=3 uid="uid://12fao12e4s73"]
+
+[ext_resource type="Texture2D" uid="uid://dikaop4nchj18" path="res://Assets/Personaje/mago_spritesheet.png" id="1_1isoj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hyakx"]
+atlas = ExtResource("1_1isoj")
+region = Rect2(0, 0, 16, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q2l1f"]
+atlas = ExtResource("1_1isoj")
+region = Rect2(16, 0, 16, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n1yv3"]
+atlas = ExtResource("1_1isoj")
+region = Rect2(32, 0, 16, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6x465"]
+atlas = ExtResource("1_1isoj")
+region = Rect2(48, 0, 16, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qyp0k"]
+atlas = ExtResource("1_1isoj")
+region = Rect2(64, 0, 16, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ol1kj"]
+atlas = ExtResource("1_1isoj")
+region = Rect2(0, 0, 16, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qya1j"]
+atlas = ExtResource("1_1isoj")
+region = Rect2(0, 20, 16, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_862ai"]
+atlas = ExtResource("1_1isoj")
+region = Rect2(16, 20, 16, 20)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hyakx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q2l1f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n1yv3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6x465")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qyp0k")
+}],
+"loop": true,
+"name": &"correr",
+"speed": 20.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"culetazo_peso_exitoso",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"culetazo_peso_fallido",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"culetazo_sin_peso",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ol1kj")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qya1j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_862ai")
+}],
+"loop": true,
+"name": &"saltar",
+"speed": 20.0
+}]
