@@ -1,9 +1,0 @@
-res://Escenas/Interfaz/EscenaPrincipal.tscn
-res://Escenas/Mapas/Segmentos/mazmorra.tres
-res://Escenas/Mapas/Segmentos/SegmentoBase.tscn
-res://Escenas/Personaje/Personaje.tscn
-res://Assets/Personaje/sprite_frames_personaje.tres
-res://Escenas/Mapas/MapaBase.tscn
-res://Escenas/Mapas/Segmentos/bordes.tscn
-res://Escenas/Personaje/personaje.gd
-res://Assets/mazmorra.tres
