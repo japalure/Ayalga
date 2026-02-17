@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://be7d8by2mekwb"]
+
+[node name="MobBase" type="Node2D"]
