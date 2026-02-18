@@ -4,20 +4,27 @@
 [ext_resource type="Script" path="res://Escenas/Mapas/mapa_base.gd" id="1_qp2df"]
 [ext_resource type="PackedScene" uid="uid://dje07y2uqw5jv" path="res://Escenas/Personaje/Personaje.tscn" id="2_xkhde"]
 
-[node name="MapaBase" type="Control" node_paths=PackedStringArray("personaje", "camara")]
+[node name="MapaBase" type="Control" node_paths=PackedStringArray("personaje", "camara", "segmento", "contenedor_segmentos")]
 custom_minimum_size = Vector2(640, 720)
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_qp2df")
-personaje = NodePath("Personaje")
+personaje = NodePath("")
 camara = NodePath("Camera2D")
+segmento = NodePath("ContenedorSegmentos/SegmentoBase")
+contenedor_segmentos = NodePath("ContenedorSegmentos")
 
-[node name="SegmentoBase" parent="." instance=ExtResource("1_ju813")]
+[node name="ContenedorSegmentos" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="SegmentoBase" parent="ContenedorSegmentos" instance=ExtResource("1_ju813")]
 layout_mode = 0
 offset_right = 620.0
 
 [node name="Personaje" parent="." instance=ExtResource("2_xkhde")]
-position = Vector2(365, 217)
+position = Vector2(362, 194)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(320, 354)

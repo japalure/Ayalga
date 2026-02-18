@@ -11,3 +11,4 @@ res://Escenas/Recursos/Piedras/PiedraBase.tscn
 res://Escenas/Recursos/Piedras/piedra_base.gd
 res://Escenas/Mapas/Segmentos/ContenedorPiedras.tscn
 res://Escenas/Mapas/Segmentos/contenedor_piedras.gd
+res://Escenas/Mapas/Segmentos/segmento.gd
