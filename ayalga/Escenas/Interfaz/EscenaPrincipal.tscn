@@ -1,21 +1,17 @@
-[gd_scene load_steps=2 format=3 uid="uid://mh0pqa4hf11a"]
+[gd_scene load_steps=3 format=3 uid="uid://mh0pqa4hf11a"]
 
+[ext_resource type="Script" path="res://Escenas/Interfaz/escena_principal.gd" id="1_235hh"]
 [ext_resource type="PackedScene" uid="uid://cyt4dmb1htbx6" path="res://Escenas/Mapas/MapaBase.tscn" id="1_jl281"]
 
 [node name="EscenaPrincipal" type="Control"]
 layout_mode = 3
 anchors_preset = 0
-
-[node name="ColorRect" type="ColorRect" parent="."]
-layout_mode = 0
-offset_right = 1280.0
-offset_bottom = 720.0
-color = Color(0.445434, 6.32438e-05, 0.401671, 1)
+script = ExtResource("1_235hh")
 
 [node name="PanelIzq" type="PanelContainer" parent="."]
-custom_minimum_size = Vector2(330, 720)
+custom_minimum_size = Vector2(320, 720)
 layout_mode = 0
-offset_right = 330.0
+offset_right = 320.0
 offset_bottom = 720.0
 metadata/_edit_lock_ = true
 

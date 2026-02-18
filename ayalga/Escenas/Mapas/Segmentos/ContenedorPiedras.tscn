@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bt0euv0act0ig"]
+
+[ext_resource type="Script" path="res://Escenas/Mapas/Segmentos/contenedor_piedras.gd" id="1_aowve"]
+
+[node name="ContenedorPiedras" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_aowve")

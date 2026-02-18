@@ -1,27 +1,24 @@
-[gd_scene load_steps=3 format=3 uid="uid://cyt4dmb1htbx6"]
+[gd_scene load_steps=4 format=3 uid="uid://cyt4dmb1htbx6"]
 
 [ext_resource type="PackedScene" uid="uid://b28mcildpeh7k" path="res://Escenas/Mapas/Segmentos/SegmentoBase.tscn" id="1_ju813"]
+[ext_resource type="Script" path="res://Escenas/Mapas/mapa_base.gd" id="1_qp2df"]
 [ext_resource type="PackedScene" uid="uid://dje07y2uqw5jv" path="res://Escenas/Personaje/Personaje.tscn" id="2_xkhde"]
 
-[node name="MapaBase" type="Control"]
-custom_minimum_size = Vector2(620, 720)
+[node name="MapaBase" type="Control" node_paths=PackedStringArray("personaje", "camara")]
+custom_minimum_size = Vector2(640, 720)
 layout_mode = 3
 anchors_preset = 0
+script = ExtResource("1_qp2df")
+personaje = NodePath("Personaje")
+camara = NodePath("Camera2D")
 
 [node name="SegmentoBase" parent="." instance=ExtResource("1_ju813")]
 layout_mode = 0
 offset_right = 620.0
-
-[node name="ColorRect" type="ColorRect" parent="."]
-visible = false
-custom_minimum_size = Vector2(620, 720)
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-color = Color(0.282353, 1, 1, 1)
 
 [node name="Personaje" parent="." instance=ExtResource("2_xkhde")]
 position = Vector2(365, 217)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(320, 354)
+offset = Vector2(0, 5)
