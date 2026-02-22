@@ -1,0 +1,36 @@
+[gd_scene load_steps=3 format=4 uid="uid://ckw5iuqnr2il5"]
+
+[ext_resource type="PackedScene" uid="uid://b28mcildpeh7k" path="res://Escenas/Mapas/Segmentos/SegmentoBase.tscn" id="1_oe48n"]
+[ext_resource type="PackedScene" uid="uid://dd0frket3ay0e" path="res://Escenas/Recursos/Piedras/PiedraBase.tscn" id="2_bfoxm"]
+
+[node name="SegmentoBase" instance=ExtResource("1_oe48n")]
+
+[node name="ColorRect" parent="." index="0"]
+color = Color(0.337692, 0.0010648, 0.537825, 1)
+
+[node name="Nivel" parent="." index="2"]
+tile_map_data = PackedByteArray("AAAWAA4AAAAAAAAAAAANAAsAAAAAAAAAAAANAAoAAAAAAAAAAAAOAAkAAAAAAAAAAAAPAAkAAAAAAAAAAAAQAAkAAAAAAAAAAAARAAkAAAAAAAAAAAASAAkAAAAAAAAAAAATAAkAAAAAAAAAAAAUAAkAAAAAAAAAAAAVAAkAAAAAAAAAAAAWAAoAAAAAAAAAAAAWAAsAAAAAAAAAAAAWAAwAAAAAAAAAAAAWAA0AAAAAAAAAAAAWAA8AAAAAAAAAAAAWABAAAAAAAAAAAAAVABEAAAAAAAAAAAAUABEAAAAAAAAAAAATABEAAAAAAAAAAAASABEAAAAAAAAAAAARABEAAAAAAAAAAAAQABEAAAAAAAAAAAAPABEAAAAAAAAAAAAWABIAAAAAAAAAAAAWABMAAAAAAAAAAAAWABQAAAAAAAAAAAAWABUAAAAAAAAAAAAWABYAAAAAAAAAAAAWABcAAAAAAAAAAAAWABgAAAAAAAAAAAAVABkAAAAAAAAAAAAUABkAAAAAAAAAAAATABkAAAAAAAAAAAASABkAAAAAAAAAAAARABkAAAAAAAAAAAAQABkAAAAAAAAAAAAPABkAAAAAAAAAAAAOABkAAAAAAAAAAAANABgAAAAAAAAAAAANABcAAAAAAAAAAAANABYAAAAAAAAAAAA=")
+
+[node name="PiedraBase" parent="ContenedorPiedras" index="0"]
+position = Vector2(70, 184)
+
+[node name="PiedraBase3" parent="ContenedorPiedras" index="1" instance=ExtResource("2_bfoxm")]
+position = Vector2(70, 379)
+
+[node name="PiedraBase4" parent="ContenedorPiedras" index="2" instance=ExtResource("2_bfoxm")]
+position = Vector2(73, 499)
+
+[node name="PiedraBase5" parent="ContenedorPiedras" index="3" instance=ExtResource("2_bfoxm")]
+position = Vector2(538, 167)
+
+[node name="PiedraBase6" parent="ContenedorPiedras" index="4" instance=ExtResource("2_bfoxm")]
+position = Vector2(539, 260)
+
+[node name="PiedraBase7" parent="ContenedorPiedras" index="5" instance=ExtResource("2_bfoxm")]
+position = Vector2(546, 365)
+
+[node name="PiedraBase8" parent="ContenedorPiedras" index="6" instance=ExtResource("2_bfoxm")]
+position = Vector2(536, 475)
+
+[node name="PiedraBase2" parent="ContenedorPiedras" index="7" instance=ExtResource("2_bfoxm")]
+position = Vector2(73, 287)

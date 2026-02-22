@@ -10,8 +10,7 @@ func _ready() -> void:
 	for child in get_children():
 		if child is Piedra:
 			piedras.append(child)
-	total_piedras = piedras.size()
-	print ("hay " + str(total_piedras) + " piedras")
+	total_piedras = piedras.size()	
 	
 	# Le asignamos a cada piedra una referencia a este contenedor
 	for piedra in piedras:

@@ -52,7 +52,7 @@ func cambio_animacion() -> void:
 		animacion.flip_h = false
 
 
-func _on_area_daño_body_entered(body: Node2D) -> void:
+func _on_area_daño_body_entered(_body: Node2D) -> void:
 	muerte()
 
 func muerte() -> void:

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cl6ypqvfno1uh"
+path="res://.godot/imported/Pal pozo-02-04-2026.wav-fd190d43910c012004b7bfeeb6d24f1e.sample"
+
+[deps]
+
+source_file="res://Assets/Musica/Pal pozo-02-04-2026.wav"
+dest_files=["res://.godot/imported/Pal pozo-02-04-2026.wav-fd190d43910c012004b7bfeeb6d24f1e.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=2
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://mh0pqa4hf11a"]
+[gd_scene load_steps=4 format=3 uid="uid://mh0pqa4hf11a"]
 
 [ext_resource type="Script" path="res://Escenas/Interfaz/escena_principal.gd" id="1_235hh"]
 [ext_resource type="PackedScene" uid="uid://cyt4dmb1htbx6" path="res://Escenas/Mapas/MapaBase.tscn" id="1_jl281"]
+[ext_resource type="AudioStream" uid="uid://cl6ypqvfno1uh" path="res://Assets/Musica/Pal pozo-02-04-2026.wav" id="3_ip7k3"]
 
 [node name="EscenaPrincipal" type="Control"]
 layout_mode = 3
@@ -9,6 +10,7 @@ anchors_preset = 0
 script = ExtResource("1_235hh")
 
 [node name="PanelIzq" type="PanelContainer" parent="."]
+self_modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(320, 720)
 layout_mode = 0
 offset_right = 320.0
@@ -16,6 +18,7 @@ offset_bottom = 720.0
 metadata/_edit_lock_ = true
 
 [node name="PanelEscenaPrincipal" type="PanelContainer" parent="."]
+self_modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(640, 720)
 layout_mode = 0
 offset_left = 320.0
@@ -27,9 +30,13 @@ metadata/_edit_lock_ = true
 layout_mode = 2
 
 [node name="PanelDch" type="PanelContainer" parent="."]
+self_modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(320, 720)
 layout_mode = 0
 offset_left = 960.0
 offset_right = 1280.0
 offset_bottom = 720.0
 metadata/_edit_lock_ = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_ip7k3")

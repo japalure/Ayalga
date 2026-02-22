@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cl8bllrd8a8h0"]
+
+[ext_resource type="Script" path="res://Escenas/Mapas/Segmentos/contenedor_mobs.gd" id="1_d6jxx"]
+
+[node name="ContenedorMobs" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_d6jxx")
