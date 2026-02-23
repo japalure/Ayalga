@@ -1,18 +1,19 @@
-[gd_scene load_steps=3 format=3 uid="uid://cyt4dmb1htbx6"]
+[gd_scene format=3 uid="uid://cyt4dmb1htbx6"]
 
 [ext_resource type="PackedScene" uid="uid://b28mcildpeh7k" path="res://Escenas/Mapas/Segmentos/SegmentoBase.tscn" id="1_ju813"]
 [ext_resource type="PackedScene" uid="uid://dje07y2uqw5jv" path="res://Escenas/Personaje/Personaje.tscn" id="2_xkhde"]
+[ext_resource type="PackedScene" uid="uid://be7d8by2mekwb" path="res://Escenas/Mobs/MobBase.tscn" id="3_ju813"]
 
-[node name="MapaBase" type="Control"]
+[node name="MapaBase" type="Control" unique_id=1098537889]
 custom_minimum_size = Vector2(620, 720)
 layout_mode = 3
 anchors_preset = 0
 
-[node name="SegmentoBase" parent="." instance=ExtResource("1_ju813")]
+[node name="SegmentoBase" parent="." unique_id=302514818 instance=ExtResource("1_ju813")]
 layout_mode = 0
 offset_right = 620.0
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1854809790]
 visible = false
 custom_minimum_size = Vector2(620, 720)
 layout_mode = 0
@@ -20,8 +21,11 @@ offset_right = 40.0
 offset_bottom = 40.0
 color = Color(0.282353, 1, 1, 1)
 
-[node name="Personaje" parent="." instance=ExtResource("2_xkhde")]
+[node name="Personaje" parent="." unique_id=1249363506 instance=ExtResource("2_xkhde")]
 position = Vector2(365, 217)
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=135277303]
 position = Vector2(320, 354)
+
+[node name="Enemigo" parent="." unique_id=409430614 instance=ExtResource("3_ju813")]
+position = Vector2(510, 426)

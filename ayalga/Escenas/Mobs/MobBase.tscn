@@ -1,3 +1,33 @@
 [gd_scene format=3 uid="uid://be7d8by2mekwb"]
 
-[node name="MobBase" type="Node2D"]
+[ext_resource type="Texture2D" uid="uid://ibdwqs8ag67m" path="res://Assets/enemigo.png" id="1_m00cm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ptgn6"]
+atlas = ExtResource("1_m00cm")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1xo3p"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ptgn6")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n60dd"]
+size = Vector2(74, 68)
+
+[node name="Enemigo" type="CharacterBody2D" unique_id=409430614]
+collision_layer = 16
+collision_mask = 8
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1726526464]
+sprite_frames = SubResource("SpriteFrames_1xo3p")
+animation = &"idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=394262830]
+position = Vector2(1, 2)
+shape = SubResource("RectangleShape2D_n60dd")

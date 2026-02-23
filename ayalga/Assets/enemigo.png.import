@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dikaop4nchj18"
-path="res://.godot/imported/mago_spritesheet.png-d575dde1e46a475794c2adc235c4c881.ctex"
+uid="uid://ibdwqs8ag67m"
+path="res://.godot/imported/enemigo.png-78fd2bae02630c664a6b4e41d7291e18.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Personaje/mago_spritesheet.png"
-dest_files=["res://.godot/imported/mago_spritesheet.png-d575dde1e46a475794c2adc235c4c881.ctex"]
+source_file="res://Assets/enemigo.png"
+dest_files=["res://.godot/imported/enemigo.png-78fd2bae02630c664a6b4e41d7291e18.ctex"]
 
 [params]
 

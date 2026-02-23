@@ -1,6 +1,7 @@
-[gd_resource type="SpriteFrames" load_steps=10 format=3 uid="uid://12fao12e4s73"]
+[gd_resource type="SpriteFrames" format=3 uid="uid://12fao12e4s73"]
 
 [ext_resource type="Texture2D" uid="uid://dikaop4nchj18" path="res://Assets/Personaje/mago_spritesheet.png" id="1_1isoj"]
+[ext_resource type="Texture2D" uid="uid://cus4mjcbml7sc" path="res://Assets/Personaje/pixilart-sprite.png" id="2_wci1f"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hyakx"]
 atlas = ExtResource("1_1isoj")
@@ -21,6 +22,26 @@ region = Rect2(48, 0, 16, 20)
 [sub_resource type="AtlasTexture" id="AtlasTexture_qyp0k"]
 atlas = ExtResource("1_1isoj")
 region = Rect2(64, 0, 16, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wci1f"]
+atlas = ExtResource("2_wci1f")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p4qa2"]
+atlas = ExtResource("2_wci1f")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3dbbf"]
+atlas = ExtResource("2_wci1f")
+region = Rect2(200, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eh04l"]
+atlas = ExtResource("2_wci1f")
+region = Rect2(300, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uu1yj"]
+atlas = ExtResource("2_wci1f")
+region = Rect2(400, 0, 100, 100)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ol1kj"]
 atlas = ExtResource("1_1isoj")
@@ -56,20 +77,43 @@ animations = [{
 "name": &"correr",
 "speed": 20.0
 }, {
-"frames": [],
-"loop": true,
-"name": &"culetazo_peso_exitoso",
-"speed": 5.0
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wci1f")
 }, {
-"frames": [],
-"loop": true,
-"name": &"culetazo_peso_fallido",
-"speed": 5.0
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p4qa2")
 }, {
-"frames": [],
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3dbbf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eh04l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uu1yj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uu1yj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uu1yj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uu1yj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uu1yj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uu1yj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uu1yj")
+}],
 "loop": true,
-"name": &"culetazo_sin_peso",
-"speed": 5.0
+"name": &"culetazo",
+"speed": 20.0
 }, {
 "frames": [{
 "duration": 1.0,
