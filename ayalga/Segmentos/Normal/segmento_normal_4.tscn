@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://nuiuluw30slj"]
+
+[ext_resource type="PackedScene" uid="uid://b28mcildpeh7k" path="res://Escenas/Mapas/Segmentos/SegmentoBase.tscn" id="1_1pfua"]
+[ext_resource type="PackedScene" uid="uid://dd0frket3ay0e" path="res://Escenas/Recursos/Piedras/PiedraBase.tscn" id="2_3m5u0"]
+[ext_resource type="PackedScene" uid="uid://be7d8by2mekwb" path="res://Escenas/Mobs/MobBase.tscn" id="3_ld37e"]
+
+[node name="SegmentoBase" instance=ExtResource("1_1pfua")]
+
+[node name="Nivel" parent="." index="2"]
+tile_map_data = PackedByteArray()
+
+[node name="PiedraBase2" parent="ContenedorPiedras" index="1" instance=ExtResource("2_3m5u0")]
+position = Vector2(399, 199)
+
+[node name="PiedraBase3" parent="ContenedorPiedras" index="2" instance=ExtResource("2_3m5u0")]
+position = Vector2(276, 353)
+
+[node name="PiedraBase4" parent="ContenedorPiedras" index="3" instance=ExtResource("2_3m5u0")]
+position = Vector2(436, 387)
+
+[node name="PiedraBase5" parent="ContenedorPiedras" index="4" instance=ExtResource("2_3m5u0")]
+position = Vector2(333, 507)
+
+[node name="MobBase" parent="ContenedorMobs" index="0" instance=ExtResource("3_ld37e")]
+position = Vector2(279, 266)

@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=4 uid="uid://b28mcildpeh7k"]
 
 [ext_resource type="Script" path="res://Escenas/Mapas/Segmentos/segmento.gd" id="1_eaneu"]
-[ext_resource type="PackedScene" uid="uid://bufxyfxsdf3fx" path="res://Escenas/Mapas/Segmentos/Bordes.tscn" id="1_ukwoj"]
+[ext_resource type="PackedScene" uid="uid://bufxyfxsdf3fx" path="res://Escenas/Mapas/Segmentos/bordes.tscn" id="1_ukwoj"]
 [ext_resource type="TileSet" uid="uid://odjd5jc1jt3d" path="res://Assets/mazmorra.tres" id="2_627rl"]
 [ext_resource type="PackedScene" uid="uid://bt0euv0act0ig" path="res://Escenas/Mapas/Segmentos/ContenedorPiedras.tscn" id="3_gl03p"]
 [ext_resource type="PackedScene" uid="uid://dd0frket3ay0e" path="res://Escenas/Recursos/Piedras/PiedraBase.tscn" id="4_crcma"]

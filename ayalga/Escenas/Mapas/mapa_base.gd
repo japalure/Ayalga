@@ -37,6 +37,7 @@ func _ready(seed:int =semilla) -> void:
 
 func _process(delta: float) -> void:
 	actualizar_camara(delta)
+	pass
 	
 
 # Busca en las carpetas de segmentos todos los segmentos creados y los guarda en arrays	
@@ -111,8 +112,8 @@ func limpiar_segmentos() -> void:
 # Función provisional hasta implementar cambios por checkpoint
 # Solo Y del personaje, X fija (centro nivel)
 func actualizar_camara(delta: float) -> void:
-	if not personaje or not camara:
+	if not personaje or not camara :
 		return
-	
+	#or not personaje.is_on_floor()
 	var target_pos = Vector2(camara.global_position.x, personaje.global_position.y)
 	camara.global_position = camara.global_position.lerp(target_pos, 10.0 * delta)
