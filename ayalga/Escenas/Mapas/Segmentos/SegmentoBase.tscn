@@ -3,9 +3,9 @@
 [ext_resource type="Script" path="res://Escenas/Mapas/Segmentos/segmento.gd" id="1_eaneu"]
 [ext_resource type="PackedScene" uid="uid://bufxyfxsdf3fx" path="res://Escenas/Mapas/Segmentos/bordes.tscn" id="1_ukwoj"]
 [ext_resource type="TileSet" uid="uid://odjd5jc1jt3d" path="res://Assets/mazmorra.tres" id="2_627rl"]
-[ext_resource type="PackedScene" uid="uid://bt0euv0act0ig" path="res://Escenas/Mapas/Segmentos/ContenedorPiedras.tscn" id="3_gl03p"]
+[ext_resource type="PackedScene" path="res://Escenas/Mapas/Segmentos/ContenedorPiedras.tscn" id="3_gl03p"]
 [ext_resource type="PackedScene" uid="uid://dd0frket3ay0e" path="res://Escenas/Recursos/Piedras/PiedraBase.tscn" id="4_crcma"]
-[ext_resource type="PackedScene" uid="uid://cl8bllrd8a8h0" path="res://Escenas/Mapas/Segmentos/Contenedor_Mobs.tscn" id="6_75c4n"]
+[ext_resource type="PackedScene" path="res://Escenas/Mapas/Segmentos/Contenedor_Mobs.tscn" id="6_75c4n"]
 
 [node name="SegmentoBase" type="Control" node_paths=PackedStringArray("contenedor_piedras", "contenedor_mob")]
 custom_minimum_size = Vector2(620, 720)

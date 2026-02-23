@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=4 uid="uid://bmrxo03sbplno"]
+[gd_scene load_steps=3 format=4 uid="uid://d076d8nxn4ya7"]
 
 [ext_resource type="PackedScene" uid="uid://b28mcildpeh7k" path="res://Escenas/Mapas/Segmentos/SegmentoBase.tscn" id="1_p7f4e"]
 [ext_resource type="PackedScene" uid="uid://dd0frket3ay0e" path="res://Escenas/Recursos/Piedras/PiedraBase.tscn" id="2_3cp2v"]
