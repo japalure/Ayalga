@@ -19,6 +19,10 @@ run/main_scene="res://Escenas/Interfaz/EscenaPrincipal.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+ControladorJuego="*res://Escenas/Interfaz/controlador_juego.gd"
+
 [display]
 
 window/size/viewport_width=1280
@@ -37,6 +41,7 @@ folder_colors={
 "res://Escenas/Mobs/": "red",
 "res://Escenas/Personaje/": "blue",
 "res://Escenas/Recursos/": "orange",
+"res://Scripts/": "green",
 "res://Segmentos/": "yellow"
 }
 

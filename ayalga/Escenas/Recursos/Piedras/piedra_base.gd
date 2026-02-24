@@ -30,4 +30,5 @@ func _ready() -> void:
 
 
 func recogida(_body):
+	ControladorJuego.sumar_piedra()
 	queue_free()

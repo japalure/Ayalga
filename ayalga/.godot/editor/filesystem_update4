@@ -1,5 +1,10 @@
+res://Escenas/Interfaz/EscenaPrincipal.tscn
 res://Escenas/Mapas/Segmentos/SegmentoBase.tscn
 res://Assets/mazmorra.tres
-res://Escenas/Mobs/MobBase.tscn
-res://Segmentos/INICIAL.tscn
+res://Assets/Personaje/sprite_frames_personaje.tres
 res://Escenas/Mapas/camera_2d.tscn
+res://Escenas/Interfaz/contador_piedras.tscn
+res://Escenas/Mapas/MapaBase.tscn
+res://Escenas/Interfaz/escena_principal.gd
+res://Escenas/Interfaz/controlador_juego.gd
+res://Escenas/Mapas/mapa_base.gd

@@ -7,7 +7,8 @@ var puede_bajar: bool = true
 
 func _ready():
 	# Espera un frame para asegurar viewport listo
-	await get_tree().process_frame
+	pass
+	#await get_tree().process_frame
 
 func _process(_delta):
 	return

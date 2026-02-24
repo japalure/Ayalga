@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://bhsh32jq8x0el"]
+
+[ext_resource type="Script" path="res://Escenas/Interfaz/contador_piedras.gd" id="1_q8q1t"]
+
+[node name="ContadorPiedras" type="Control" node_paths=PackedStringArray("label")]
+layout_mode = 3
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 0
+grow_vertical = 2
+script = ExtResource("1_q8q1t")
+label = NodePath("Label")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Piedras: 0"

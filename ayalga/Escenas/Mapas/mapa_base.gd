@@ -1,5 +1,6 @@
 #Cargará los segmentos, los organizará para crear niveles, creará enemigos y recompensas
 #manejará la cámara
+class_name Mapa
 extends Control
 
 @export var personaje: CharacterBody2D
@@ -114,6 +115,16 @@ func limpiar_segmentos() -> void:
 func actualizar_camara(delta: float) -> void:
 	if not personaje or not camara :
 		return
-	#or not personaje.is_on_floor()
-	var target_pos = Vector2(camara.global_position.x, personaje.global_position.y)
+
+	var target_y:float
+	var offset:float = 0
+	#La cámara nunca sube, aunque el personaje salte
+	if camara.global_position.y < personaje.global_position.y:
+		target_y = personaje.global_position.y
+		target_y -= offset
+		#print (str(target_y))
+	else:	  
+		target_y = camara.global_position.y
+		
+	var target_pos = Vector2(camara.global_position.x, target_y)
 	camara.global_position = camara.global_position.lerp(target_pos, 10.0 * delta)

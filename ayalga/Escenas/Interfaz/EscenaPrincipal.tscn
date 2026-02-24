@@ -1,13 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://mh0pqa4hf11a"]
+[gd_scene load_steps=5 format=3 uid="uid://dw3eofudejxvj"]
 
-[ext_resource type="Script" path="res://Escenas/Interfaz/escena_principal.gd" id="1_235hh"]
-[ext_resource type="PackedScene" uid="uid://cyt4dmb1htbx6" path="res://Escenas/Mapas/MapaBase.tscn" id="1_jl281"]
-[ext_resource type="AudioStream" uid="uid://cl6ypqvfno1uh" path="res://Assets/Musica/Pal pozo-02-04-2026.wav" id="3_ip7k3"]
+[ext_resource type="Script" path="res://Escenas/Interfaz/controlador_juego.gd" id="1_tt8ux"]
+[ext_resource type="PackedScene" uid="uid://bhsh32jq8x0el" path="res://Escenas/Interfaz/contador_piedras.tscn" id="2_ulici"]
+[ext_resource type="PackedScene" uid="uid://cyt4dmb1htbx6" path="res://Escenas/Mapas/MapaBase.tscn" id="3_oyar4"]
+[ext_resource type="AudioStream" uid="uid://cl6ypqvfno1uh" path="res://Assets/Musica/Pal pozo-02-04-2026.wav" id="4_tj6q0"]
 
-[node name="EscenaPrincipal" type="Control"]
+[node name="EscenaPrincipal" type="Control" node_paths=PackedStringArray("creador_mapas")]
 layout_mode = 3
 anchors_preset = 0
-script = ExtResource("1_235hh")
+script = ExtResource("1_tt8ux")
+creador_mapas = NodePath("PanelEscenaPrincipal/MapaBase")
 
 [node name="PanelIzq" type="PanelContainer" parent="."]
 self_modulate = Color(1, 1, 1, 0)
@@ -16,6 +18,14 @@ layout_mode = 0
 offset_right = 320.0
 offset_bottom = 720.0
 metadata/_edit_lock_ = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="PanelIzq"]
+
+[node name="ContadorPiedras" parent="PanelIzq/CanvasLayer" instance=ExtResource("2_ulici")]
+offset_left = -1215.0
+offset_top = -330.0
+offset_right = -1215.0
+offset_bottom = -330.0
 
 [node name="PanelEscenaPrincipal" type="PanelContainer" parent="."]
 self_modulate = Color(1, 1, 1, 0)
@@ -26,7 +36,7 @@ offset_right = 960.0
 offset_bottom = 720.0
 metadata/_edit_lock_ = true
 
-[node name="MapaBase" parent="PanelEscenaPrincipal" instance=ExtResource("1_jl281")]
+[node name="MapaBase" parent="PanelEscenaPrincipal" instance=ExtResource("3_oyar4")]
 layout_mode = 2
 
 [node name="PanelDch" type="PanelContainer" parent="."]
@@ -39,4 +49,4 @@ offset_bottom = 720.0
 metadata/_edit_lock_ = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_ip7k3")
+stream = ExtResource("4_tj6q0")
