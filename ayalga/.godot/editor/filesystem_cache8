@@ -35,6 +35,11 @@ SegmentoBase.tscn::PackedScene::4350376540641122838::1771959407::0::1::::<><>::r
 ::res://Escenas/Mobs/::1771959407
 MobBase.tscn::PackedScene::2733477319393922517::1771959407::0::1::::<><>::uid://mhac2bay5fwn::::res://icon.svg
 mob_base.gd::GDScript::-1::1771958287::0::1::::Mob<>Node2D<>::
+segmento.gd::GDScript::-1::1771886801::0::1::::Segmento<>Control<>::
+SegmentoBase.tscn::PackedScene::4350376540641122838::1771887373::0::1::::<><>::res://Escenas/Mapas/Segmentos/segmento.gd<>uid://bufxyfxsdf3fx::::res://Escenas/Mapas/Segmentos/bordes.tscn<>uid://odjd5jc1jt3d::::res://Assets/mazmorra.tres<>res://Escenas/Mapas/Segmentos/ContenedorPiedras.tscn<>uid://dd0frket3ay0e::::res://Escenas/Recursos/Piedras/PiedraBase.tscn<>res://Escenas/Mapas/Segmentos/Contenedor_Mobs.tscn
+::res://Escenas/Mobs/::1771887373
+MobBase.tscn::PackedScene::2733477319393922517::1771886632::0::1::::<><>::uid://mhac2bay5fwn::::res://icon.svg
+mob_base.gd::GDScript::-1::1771886801::0::1::::Mob<>Node2D<>::
 ::res://Escenas/Normal/::1771760611
 ::res://Escenas/Personaje/::1771959407
 personaje.gd::GDScript::-1::1771959407::0::1::::<>CharacterBody2D<>::
@@ -46,6 +51,9 @@ PiedraBase.tscn::PackedScene::7421772501618548438::1771886801::0::1::::<><>::res
 piedra_base.gd::GDScript::-1::1771958287::0::1::::Piedra<>Node2D<>::
 ::res://Segmentos/::1771936750
 INICIAL.tscn::PackedScene::8981932568734067544::1771936750::0::1::::<><>::uid://b28mcildpeh7k::::res://Escenas/Mapas/Segmentos/SegmentoBase.tscn<>uid://dd0frket3ay0e::::res://Escenas/Recursos/Piedras/PiedraBase.tscn
+piedra_base.gd::GDScript::-1::1771886801::0::1::::Piedra<>Node2D<>::
+::res://Segmentos/::1771887373
+INICIAL.tscn::PackedScene::8981932568734067544::1771887357::0::1::::<><>::uid://b28mcildpeh7k::::res://Escenas/Mapas/Segmentos/SegmentoBase.tscn<>uid://dd0frket3ay0e::::res://Escenas/Recursos/Piedras/PiedraBase.tscn
 ::res://Segmentos/Checkpoint/::1771886801
 segmento_checkpoint_1.tscn::PackedScene::2811708862144927220::1771886801::0::1::::<><>::uid://b28mcildpeh7k::::res://Escenas/Mapas/Segmentos/SegmentoBase.tscn
 ::res://Segmentos/Normal/::1771886801
