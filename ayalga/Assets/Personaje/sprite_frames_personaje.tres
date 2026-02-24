@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" format=3 uid="uid://12fao12e4s73"]
+[gd_resource type="SpriteFrames" load_steps=16 format=3 uid="uid://12fao12e4s73"]
 
 [ext_resource type="Texture2D" uid="uid://dikaop4nchj18" path="res://Assets/Personaje/mago_spritesheet.png" id="1_1isoj"]
 [ext_resource type="Texture2D" uid="uid://cus4mjcbml7sc" path="res://Assets/Personaje/pixilart-sprite.png" id="2_wci1f"]
