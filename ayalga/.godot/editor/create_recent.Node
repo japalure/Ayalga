@@ -1,9 +1,6 @@
-Sprite2D
-AudioStreamPlayer
-AudioStreamPlayer2D
-Control
+AnimatedSprite2D
 CollisionShape2D
+CharacterBody2D
+RayCast2D
 Area2D
 Camera2D
-AnimatedSprite2D
-CharacterBody2D
