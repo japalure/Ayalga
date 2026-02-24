@@ -5,11 +5,11 @@
 [ext_resource type="PackedScene" uid="uid://cyt4dmb1htbx6" path="res://Escenas/Mapas/MapaBase.tscn" id="3_oyar4"]
 [ext_resource type="AudioStream" uid="uid://cl6ypqvfno1uh" path="res://Assets/Musica/Pal pozo-02-04-2026.wav" id="4_tj6q0"]
 
-[node name="EscenaPrincipal" type="Control" node_paths=PackedStringArray("creador_mapas")]
+[node name="EscenaPrincipal" type="Control" node_paths=PackedStringArray("mapa")]
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_tt8ux")
-creador_mapas = NodePath("PanelEscenaPrincipal/MapaBase")
+mapa = NodePath("PanelEscenaPrincipal/MapaBase")
 
 [node name="PanelIzq" type="PanelContainer" parent="."]
 self_modulate = Color(1, 1, 1, 0)

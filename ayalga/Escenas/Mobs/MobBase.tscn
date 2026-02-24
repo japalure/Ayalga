@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://be7d8by2mekwb"]
+[gd_scene load_steps=5 format=3 uid="uid://be7d8by2mekwb"]
 
 [ext_resource type="Texture2D" uid="uid://ibdwqs8ag67m" path="res://Assets/enemigo.png" id="1_m00cm"]
 
@@ -20,14 +20,14 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n60dd"]
 size = Vector2(74, 68)
 
-[node name="Enemigo" type="CharacterBody2D" unique_id=409430614]
+[node name="Enemigo" type="CharacterBody2D"]
 collision_layer = 16
 collision_mask = 8
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1726526464]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_1xo3p")
 animation = &"idle"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=394262830]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1, 2)
 shape = SubResource("RectangleShape2D_n60dd")

@@ -7,11 +7,14 @@ extends Control
 signal piedra_recogida
 var piedras_recogidas:int = 0
 
+@export var mapa:Mapa 
+
 func _ready() -> void:
 	pass # Replace with function body.
 
-func _process(_delta: float) -> void:
-	pass
+func nuevo_mapa() -> void:
+	mapa
+
 
 func sumar_piedra() -> void:
 	piedras_recogidas += 1
