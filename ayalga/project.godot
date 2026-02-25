@@ -26,20 +26,20 @@ ControladorJuego="*res://Escenas/Interfaz/controlador_juego.gd"
 [display]
 
 window/size/viewport_width=1280
-window/size/viewport_height=720
+window/size/viewport_height=736
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 
 [file_customization]
 
 folder_colors={
+"res://Assets/Jugador/": "blue",
 "res://Assets/Mapas/": "pink",
-"res://Assets/Personaje/": "blue",
 "res://Escenas/": "red",
 "res://Escenas/Interfaz/": "teal",
+"res://Escenas/Jugador/": "blue",
 "res://Escenas/Mapas/": "pink",
 "res://Escenas/Mobs/": "red",
-"res://Escenas/Personaje/": "blue",
 "res://Escenas/Recursos/": "orange",
 "res://Scripts/": "green",
 "res://Segmentos/": "yellow"

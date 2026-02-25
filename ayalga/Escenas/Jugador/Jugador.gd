@@ -1,3 +1,4 @@
+class_name Jugador
 extends CharacterBody2D
 
 @export var animacion: AnimatedSprite2D
@@ -17,13 +18,14 @@ const _velocidad_culetazo:float = 300.0
 var _muerto: bool = false
 var _golpeando: bool = false
 #Distancia recorrida
-var distancia_recorrida: float = 0.0
+var distancia_recorrida: float
 var posicion_y_inicial: float
 
 func _ready() -> void:
 	await get_tree().process_frame  # Espera 1 frame para que global_position sea válido
 	await get_tree().process_frame
 	area_daño.body_entered.connect(_on_area_daño_body_entered)
+	distancia_recorrida = 0.0
 	posicion_y_inicial = global_position.y
 
 	
@@ -42,18 +44,12 @@ func _physics_process(delta: float) -> void:
 	
 	sumar_distancia_bajada()
 	
-#calcula la distancia total descendida por el personaje
-func sumar_distancia_bajada() -> void:
-	var pos_y_actual = global_position.y
-	var nueva_distancia = pos_y_actual - posicion_y_inicial   # Positiva al bajar
-	#print("posicion_y_inicial : ", posicion_y_inicial, " pos_y_actual : ", pos_y_actual, " nueva_distancia : ", nueva_distancia) 
-	if nueva_distancia > distancia_recorrida:
-		distancia_recorrida = nueva_distancia
-		ControladorJuego.actualizar_distancia(distancia_recorrida)
-		#print("Distancia recorrida: %.2f px" % abs(distancia_recorrida))
 
+## Funciones de estado
+func haciendo_culetazo() -> bool:
+	return _golpeando
 
-# Maneja movimiento flechas izquierda y derecha
+## Maneja movimiento flechas izquierda y derecha
 func movimiento_lateral() -> void:
 	if !_golpeando:
 		if Input.is_action_pressed("derecha"):
@@ -64,15 +60,13 @@ func movimiento_lateral() -> void:
 			velocity.x = move_toward(velocity.x, 0, _velocidad)
 
 
-# Manejo de salto
+## Manejo de salto
 func salto() -> void:
-	
 	if Input.is_action_just_pressed("saltar") and is_on_floor():
 		velocity.y = _velocidad_salto
 		
-		
 
-#Manejo culetazo
+## Manejo culetazo
 func culetazo() -> void:
 	if(Input.is_action_just_pressed("culetazo") && !is_on_floor() && !_golpeando):
 		iniciar_culetazo()		
@@ -147,3 +141,13 @@ func muerte() -> void:
 	print("muerto")
 	_muerto = true
 	animacion.stop()
+
+#calcula la distancia total descendida por el personaje
+func sumar_distancia_bajada() -> void:
+	var pos_y_actual = global_position.y
+	var nueva_distancia = pos_y_actual - posicion_y_inicial
+	#print("posicion_y_inicial : ", posicion_y_inicial, " pos_y_actual : ", pos_y_actual, " nueva_distancia : ", nueva_distancia) 
+	if nueva_distancia > distancia_recorrida:
+		distancia_recorrida = nueva_distancia
+		ControladorJuego.actualizar_distancia(distancia_recorrida)
+		#print("Distancia recorrida: %.2f px" % abs(distancia_recorrida))

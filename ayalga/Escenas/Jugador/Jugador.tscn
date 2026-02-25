@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://dje07y2uqw5jv"]
 
-[ext_resource type="Script" path="res://Escenas/Personaje/personaje.gd" id="1_1davp"]
-[ext_resource type="SpriteFrames" uid="uid://12fao12e4s73" path="res://Assets/Personaje/sprite_frames_personaje.tres" id="2_h30nl"]
+[ext_resource type="Script" path="res://Escenas/Jugador/Jugador.gd" id="1_1davp"]
+[ext_resource type="SpriteFrames" uid="uid://12fao12e4s73" path="res://Assets/Jugador/sprite_frames_personaje.tres" id="2_h30nl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sn41b"]
 size = Vector2(37, 43)
@@ -9,7 +9,7 @@ size = Vector2(37, 43)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0pqwy"]
 size = Vector2(37, 43)
 
-[node name="Personaje" type="CharacterBody2D" node_paths=PackedStringArray("animacion", "area_daño", "raycast_suelo")]
+[node name="Jugador" type="CharacterBody2D" node_paths=PackedStringArray("animacion", "area_daño", "raycast_suelo")]
 collision_layer = 8
 collision_mask = 19
 script = ExtResource("1_1davp")

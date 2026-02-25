@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Escenas/Interfaz/controlador_juego.gd" id="1_tt8ux"]
 [ext_resource type="PackedScene" uid="uid://bhsh32jq8x0el" path="res://Escenas/Interfaz/Etiquetas/contador_piedras.tscn" id="2_ulici"]
 [ext_resource type="PackedScene" uid="uid://ch6ldcmvereei" path="res://Escenas/Interfaz/Etiquetas/distancia_recorrida.tscn" id="3_k8yys"]
-[ext_resource type="PackedScene" uid="uid://dje07y2uqw5jv" path="res://Escenas/Personaje/Personaje.tscn" id="4_ijraw"]
+[ext_resource type="PackedScene" uid="uid://dje07y2uqw5jv" path="res://Escenas/Jugador/Jugador.tscn" id="4_ijraw"]
 [ext_resource type="AudioStream" uid="uid://cl6ypqvfno1uh" path="res://Assets/Musica/Pal pozo-02-04-2026.wav" id="4_tj6q0"]
 [ext_resource type="PackedScene" uid="uid://dnasp4ev4rv33" path="res://Escenas/Interfaz/camera_2d.tscn" id="5_0f3pd"]
 [ext_resource type="Script" path="res://Escenas/Interfaz/camera_2d.gd" id="5_3abcs"]
@@ -17,7 +17,7 @@ camara = NodePath("PanelEscenaPrincipal/Camera2D")
 
 [node name="PanelIzq" type="PanelContainer" parent="."]
 self_modulate = Color(1, 1, 1, 0)
-custom_minimum_size = Vector2(320, 720)
+custom_minimum_size = Vector2(320, 736)
 layout_mode = 0
 offset_right = 320.0
 offset_bottom = 720.0
@@ -46,7 +46,7 @@ grow_vertical = 2
 
 [node name="PanelEscenaPrincipal" type="PanelContainer" parent="."]
 self_modulate = Color(1, 1, 1, 0)
-custom_minimum_size = Vector2(640, 720)
+custom_minimum_size = Vector2(640, 736)
 layout_mode = 0
 offset_left = 320.0
 offset_right = 960.0
@@ -63,7 +63,7 @@ position = Vector2(275, 226)
 
 [node name="PanelDch" type="PanelContainer" parent="."]
 self_modulate = Color(1, 1, 1, 0)
-custom_minimum_size = Vector2(320, 720)
+custom_minimum_size = Vector2(320, 736)
 layout_mode = 0
 offset_left = 960.0
 offset_right = 1280.0

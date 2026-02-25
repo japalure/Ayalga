@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cus4mjcbml7sc"
-path="res://.godot/imported/pixilart-sprite.png-9818c87f37ab08828fba6e4120f76483.ctex"
+uid="uid://dikaop4nchj18"
+path="res://.godot/imported/mago_spritesheet.png-f44d4534c1bbcf55b22ce22808623c8f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Personaje/pixilart-sprite.png"
-dest_files=["res://.godot/imported/pixilart-sprite.png-9818c87f37ab08828fba6e4120f76483.ctex"]
+source_file="res://Assets/Jugador/mago_spritesheet.png"
+dest_files=["res://.godot/imported/mago_spritesheet.png-f44d4534c1bbcf55b22ce22808623c8f.ctex"]
 
 [params]
 

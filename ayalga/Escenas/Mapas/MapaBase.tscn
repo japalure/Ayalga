@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://b28mcildpeh7k" path="res://Escenas/Mapas/Segmentos/SegmentoBase.tscn" id="1_ju813"]
 [ext_resource type="Script" path="res://Escenas/Mapas/mapa_base.gd" id="1_qp2df"]
-[ext_resource type="PackedScene" uid="uid://d076d8nxn4ya7" path="res://Segmentos/INICIAL.tscn" id="2_pqx5c"]
+[ext_resource type="PackedScene" uid="uid://b7udqrjl4r6rn" path="res://Segmentos/INICIAL.tscn" id="2_pqx5c"]
 
 [node name="MapaBase" type="Control" node_paths=PackedStringArray("segmento", "contenedor_segmentos")]
 custom_minimum_size = Vector2(640, 720)

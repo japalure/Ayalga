@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dikaop4nchj18"
-path="res://.godot/imported/mago_spritesheet.png-d575dde1e46a475794c2adc235c4c881.ctex"
+uid="uid://dbbs6onhb3n80"
+path="res://.godot/imported/plataforma_rompible.png-8e2cbc521314e25e67d514e62cc87e48.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Personaje/mago_spritesheet.png"
-dest_files=["res://.godot/imported/mago_spritesheet.png-d575dde1e46a475794c2adc235c4c881.ctex"]
+source_file="res://Assets/Mapas/Plataformas/plataforma_rompible.png"
+dest_files=["res://.godot/imported/plataforma_rompible.png-8e2cbc521314e25e67d514e62cc87e48.ctex"]
 
 [params]
 
