@@ -1,6 +1,6 @@
-[gd_scene format=3 uid="uid://dje07y2uqw5jv"]
+[gd_scene load_steps=5 format=3 uid="uid://dje07y2uqw5jv"]
 
-[ext_resource type="Script" uid="uid://21b2peoyarna" path="res://Escenas/Personaje/personaje.gd" id="1_1davp"]
+[ext_resource type="Script" path="res://Escenas/Personaje/personaje.gd" id="1_1davp"]
 [ext_resource type="SpriteFrames" uid="uid://12fao12e4s73" path="res://Assets/Personaje/sprite_frames_personaje.tres" id="2_h30nl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sn41b"]
@@ -9,7 +9,7 @@ size = Vector2(37, 43)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0pqwy"]
 size = Vector2(37, 43)
 
-[node name="Personaje" type="CharacterBody2D" unique_id=1634226489 node_paths=PackedStringArray("animacion", "area_daño", "raycast_suelo")]
+[node name="Personaje" type="CharacterBody2D" node_paths=PackedStringArray("animacion", "area_daño", "raycast_suelo")]
 collision_layer = 8
 collision_mask = 19
 script = ExtResource("1_1davp")
@@ -17,26 +17,26 @@ animacion = NodePath("AnimatedSprite2D")
 "area_daño" = NodePath("AreaDaño")
 raycast_suelo = NodePath("RayCast2D")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1696981978]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 position = Vector2(4.5, 5)
 scale = Vector2(3, 2.879)
 sprite_frames = ExtResource("2_h30nl")
 animation = &"idle"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2046657594]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(2.5, 3.5)
 shape = SubResource("RectangleShape2D_sn41b")
 
-[node name="AreaDaño" type="Area2D" parent="." unique_id=1820604648]
+[node name="AreaDaño" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaDaño" unique_id=6650096]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaDaño"]
 position = Vector2(2.5, 3.5)
 shape = SubResource("RectangleShape2D_0pqwy")
 
-[node name="RayCast2D" type="RayCast2D" parent="." unique_id=285229703]
+[node name="RayCast2D" type="RayCast2D" parent="."]
 target_position = Vector2(0, 35)
 
 [connection signal="body_entered" from="AreaDaño" to="." method="_on_area_daño_body_entered"]

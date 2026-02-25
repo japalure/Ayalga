@@ -3,8 +3,7 @@
 class_name Mapa
 extends Control
 
-@export var personaje: CharacterBody2D
-@export var camara: Camera2D
+
 @export var segmento: Segmento
 @export var contenedor_segmentos: Control
 
@@ -26,18 +25,17 @@ var rng: RandomNumberGenerator = RandomNumberGenerator.new()
 var semilla: int =1245 # Seed para random reproducibles
 var nivel_actual: int = 0
 
-func _ready(seed:int =semilla) -> void:
-	if seed == 1245:  # Default
+func _ready(sem:int =semilla) -> void:
+	if sem == 1245:  # Default
 		rng.randomize()
 		#print ("random ", rng.seed)
 	else:
-		rng.seed = seed 
+		rng.seed = sem 
 	limpiar_segmentos()
 	cargar_pool_segmentos()
 	generar_nivel(nivel_actual)
 
-func _process(delta: float) -> void:
-	actualizar_camara(delta)
+func _process(_delta: float) -> void:
 	pass
 	
 
@@ -73,8 +71,6 @@ func obtener_tscn(carpeta: String) -> Array[Segmento]:
 	dir.list_dir_end()  # Limpia
 	return escenas
 
-func add_inicial() -> void:
-	pass
 
 # Crea un nivel a partir de la pool de segmentos siguiendo la lógica de:
 # cada nivel se compone de 8 segmentos normales, 1 de tienda y 1 al final de checkpoint
@@ -90,7 +86,6 @@ func generar_nivel(nivel: int) -> void:
 	for i in range(0, min(9, pool_segmentos_normal.size())):
 		var seg: Segmento = pool_segmentos_normal[i]
 		segmentos_activos.append(seg)
-		
 	segmentos_activos.append(pool_segmentos_checkpoint[0])
 	add_segmentos_mapa()
 
@@ -108,23 +103,3 @@ func limpiar_segmentos() -> void:
 	
 	for child in contenedor_segmentos.get_children():
 		child.queue_free()
-
-
-# Función provisional hasta implementar cambios por checkpoint
-# Solo Y del personaje, X fija (centro nivel)
-func actualizar_camara(delta: float) -> void:
-	if not personaje or not camara :
-		return
-
-	var target_y:float
-	var offset:float = 0
-	#La cámara nunca sube, aunque el personaje salte
-	if camara.global_position.y < personaje.global_position.y:
-		target_y = personaje.global_position.y
-		target_y -= offset
-		#print (str(target_y))
-	else:	  
-		target_y = camara.global_position.y
-		
-	var target_pos = Vector2(camara.global_position.x, target_y)
-	camara.global_position = camara.global_position.lerp(target_pos, 10.0 * delta)

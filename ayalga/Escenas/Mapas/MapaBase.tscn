@@ -1,18 +1,14 @@
-[gd_scene load_steps=6 format=3 uid="uid://cyt4dmb1htbx6"]
+[gd_scene load_steps=4 format=3 uid="uid://cyt4dmb1htbx6"]
 
 [ext_resource type="PackedScene" uid="uid://b28mcildpeh7k" path="res://Escenas/Mapas/Segmentos/SegmentoBase.tscn" id="1_ju813"]
 [ext_resource type="Script" path="res://Escenas/Mapas/mapa_base.gd" id="1_qp2df"]
 [ext_resource type="PackedScene" uid="uid://d076d8nxn4ya7" path="res://Segmentos/INICIAL.tscn" id="2_pqx5c"]
-[ext_resource type="PackedScene" uid="uid://dje07y2uqw5jv" path="res://Escenas/Personaje/Personaje.tscn" id="2_xkhde"]
-[ext_resource type="PackedScene" uid="uid://dnasp4ev4rv33" path="res://Escenas/Mapas/camera_2d.tscn" id="5_7g8c1"]
 
-[node name="MapaBase" type="Control" node_paths=PackedStringArray("personaje", "camara", "segmento", "contenedor_segmentos")]
+[node name="MapaBase" type="Control" node_paths=PackedStringArray("segmento", "contenedor_segmentos")]
 custom_minimum_size = Vector2(640, 720)
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_qp2df")
-personaje = NodePath("Personaje")
-camara = NodePath("Camera2D")
 segmento = NodePath("ContenedorSegmentos/SegmentoBase")
 contenedor_segmentos = NodePath("ContenedorSegmentos")
 segmento_inicial = ExtResource("2_pqx5c")
@@ -25,8 +21,3 @@ offset_bottom = 40.0
 [node name="SegmentoBase" parent="ContenedorSegmentos" instance=ExtResource("1_ju813")]
 layout_mode = 0
 offset_right = 620.0
-
-[node name="Personaje" parent="." instance=ExtResource("2_xkhde")]
-position = Vector2(362, 194)
-
-[node name="Camera2D" parent="." instance=ExtResource("5_7g8c1")]

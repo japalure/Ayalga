@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://ch6ldcmvereei"]
+
+[ext_resource type="Script" path="res://Escenas/Interfaz/Etiquetas/distancia_recorrida.gd" id="1_8cc5d"]
+
+[node name="DistanciaRecorrida" type="Control" node_paths=PackedStringArray("label")]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_8cc5d")
+label = NodePath("Label")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 69.0
+offset_top = 59.0
+offset_right = 159.0
+offset_bottom = 82.0
+text = "Distancia: 0"

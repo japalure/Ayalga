@@ -4,9 +4,10 @@ extends CharacterBody2D
 @export var area_daño: Area2D
 @export var raycast_suelo: RayCast2D
 
+
 #movimiento
 const _velocidad:float = 300.0
-const _velocidad_salto:float = -400.0
+const _velocidad_salto:float = -600.0
 var _tiempo_en_aire: float = 0.0;
 #culetazo
 var _altura_inicial_culetazo: float = 0.0
@@ -15,12 +16,18 @@ const _velocidad_culetazo:float = 300.0
 #estados
 var _muerto: bool = false
 var _golpeando: bool = false
+#Distancia recorrida
+var distancia_recorrida: float = 0.0
+var posicion_y_inicial: float
 
 func _ready() -> void:
+	await get_tree().process_frame  # Espera 1 frame para que global_position sea válido
+	await get_tree().process_frame
 	area_daño.body_entered.connect(_on_area_daño_body_entered)
+	posicion_y_inicial = global_position.y
+
 	
 func _physics_process(delta: float) -> void:	
-	
 	if _muerto:
 		return
 	# gravedad
@@ -32,6 +39,18 @@ func _physics_process(delta: float) -> void:
 	movimiento_lateral()
 	move_and_slide()
 	cambio_animacion()
+	
+	sumar_distancia_bajada()
+	
+#calcula la distancia total descendida por el personaje
+func sumar_distancia_bajada() -> void:
+	var pos_y_actual = global_position.y
+	var nueva_distancia = pos_y_actual - posicion_y_inicial   # Positiva al bajar
+	#print("posicion_y_inicial : ", posicion_y_inicial, " pos_y_actual : ", pos_y_actual, " nueva_distancia : ", nueva_distancia) 
+	if nueva_distancia > distancia_recorrida:
+		distancia_recorrida = nueva_distancia
+		ControladorJuego.actualizar_distancia(distancia_recorrida)
+		#print("Distancia recorrida: %.2f px" % abs(distancia_recorrida))
 
 
 # Maneja movimiento flechas izquierda y derecha
@@ -70,9 +89,9 @@ func procesar_culetazo()->void:
 	velocity.x = 0
 	velocity.y = _velocidad_culetazo
 	
-	var distancia_recorrida = position.y - _altura_inicial_culetazo
+	var distancia_recorrida_culetazo = position.y - _altura_inicial_culetazo
 	
-	if distancia_recorrida >= _distancia_culetazo:
+	if distancia_recorrida_culetazo >= _distancia_culetazo:
 		terminar_culetazo()
 	elif detectar_contacto_culetazo():
 		procesar_contacto_culetazo()

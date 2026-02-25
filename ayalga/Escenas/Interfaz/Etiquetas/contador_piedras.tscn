@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bhsh32jq8x0el"]
 
-[ext_resource type="Script" path="res://Escenas/Interfaz/contador_piedras.gd" id="1_q8q1t"]
+[ext_resource type="Script" path="res://Escenas/Interfaz/Etiquetas/contador_piedras.gd" id="1_q8q1t"]
 
 [node name="ContadorPiedras" type="Control" node_paths=PackedStringArray("label")]
 layout_mode = 3
