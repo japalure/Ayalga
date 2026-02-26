@@ -23,6 +23,3 @@ func _process(_delta):
 		
 	var target_pos = Vector2(self.global_position.x, target_y)
 	self.global_position = self.global_position.lerp(target_pos, 10.0 * _delta)
-
-func asignar_personaje(p: CharacterBody2D) -> void:
-	personaje = p
