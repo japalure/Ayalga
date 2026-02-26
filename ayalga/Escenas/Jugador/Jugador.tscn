@@ -4,7 +4,7 @@
 [ext_resource type="SpriteFrames" uid="uid://12fao12e4s73" path="res://Assets/Jugador/sprite_frames_personaje.tres" id="2_h30nl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sn41b"]
-size = Vector2(37, 43)
+size = Vector2(27, 41)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0pqwy"]
 size = Vector2(37, 43)
@@ -25,7 +25,7 @@ sprite_frames = ExtResource("2_h30nl")
 animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(2.5, 3.5)
+position = Vector2(3.5, 4.5)
 shape = SubResource("RectangleShape2D_sn41b")
 
 [node name="AreaDaño" type="Area2D" parent="."]

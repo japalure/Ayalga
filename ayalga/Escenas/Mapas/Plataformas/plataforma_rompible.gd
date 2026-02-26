@@ -1,6 +1,6 @@
 extends StaticBody2D
 
-@onready var sprite:Sprite2D = $Sprite2D
+@onready var sprite:TileMapLayer = $TileMapLayer
 @onready var timer:Timer = $Timer
 
 var tiempo = 1

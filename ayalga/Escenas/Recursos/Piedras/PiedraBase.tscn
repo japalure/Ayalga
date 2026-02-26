@@ -1,26 +1,26 @@
-[gd_scene load_steps=5 format=3 uid="uid://dd0frket3ay0e"]
+[gd_scene load_steps=4 format=3 uid="uid://dd0frket3ay0e"]
 
 [ext_resource type="Script" path="res://Escenas/Recursos/Piedras/piedra_base.gd" id="1_3esyg"]
-[ext_resource type="Texture2D" uid="uid://beybfvhubq1cm" path="res://Assets/Mapas/tileset_mazmorra.png" id="2_y4bqy"]
+[ext_resource type="TileSet" uid="uid://bjghdq4mlvcqf" path="res://Assets/tile_map_cueva.tres" id="2_ls2y3"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_j8jt2"]
-atlas = ExtResource("2_y4bqy")
-region = Rect2(48, 48, 16, 16)
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_oxie8"]
-radius = 8.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4fsbg"]
+radius = 7.80012
 
 [node name="Piedra" type="Node2D" node_paths=PackedStringArray("skin", "area_2d")]
 script = ExtResource("1_3esyg")
-skin = NodePath("Sprite2D")
+skin = NodePath("TileMapLayer")
 area_2d = NodePath("Area2D")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = SubResource("AtlasTexture_j8jt2")
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+position = Vector2(-17, 16)
+tile_map_data = PackedByteArray(0, 0, 0, 0, 255, 255, 0, 0, 0, 0, 9, 0, 0, 0)
+tile_set = ExtResource("2_ls2y3")
 
 [node name="Area2D" type="Area2D" parent="."]
+scale = Vector2(1.66664, 1)
 collision_layer = 4
 collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("CircleShape2D_oxie8")
+position = Vector2(-0.60001, -5.96046e-08)
+shape = SubResource("CapsuleShape2D_4fsbg")

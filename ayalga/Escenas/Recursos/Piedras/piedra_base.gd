@@ -4,7 +4,8 @@ extends Node2D
 # Identificador único de la piedra mientras dure la sesión
 @export var id: int = 0
 # Textura / sprite asociado al tier (se puede asignar en el editor)
-@export var skin: Sprite2D
+@export var skin: TileMapLayer
+@export var tile_map_id: int
 @export var area_2d: Area2D
 
 var ContenedorPiedra: ContenedorPiedras #Esta referencia se resuelve dentro de ContenedorPiedras
@@ -27,8 +28,16 @@ func _ready() -> void:
 	# ID único durante esta sesión	
 	id = get_instance_id()  
 	area_2d.body_entered.connect(recogida)
-
+	aplicar_skin(randi_range(0, 3))
 
 func recogida(_body):
 	ControladorJuego.sumar_piedra()
 	queue_free()
+
+#cambia el tile de la piedra 
+func aplicar_skin(indice: int):
+	skin.set_cell(
+		Vector2i(0, -1),
+		tile_map_id,
+		Vector2i(indice, 9)
+	)
