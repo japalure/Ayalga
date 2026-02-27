@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dd0frket3ay0e" path="res://Escenas/Recursos/Piedras/PiedraBase.tscn" id="4_crcma"]
 [ext_resource type="PackedScene" path="res://Escenas/Mapas/Segmentos/Contenedor_Mobs.tscn" id="6_75c4n"]
 
-[node name="SegmentoBase" type="Control" node_paths=PackedStringArray("contenedor_piedras", "contenedor_mob")]
+[node name="SegmentoBase" type="Control" node_paths=PackedStringArray("contenedor_piedras", "contenedor_mob", "tile_map_nivel")]
 custom_minimum_size = Vector2(640, 720)
 layout_mode = 3
 anchors_preset = 0
@@ -15,6 +15,8 @@ offset_bottom = 720.0
 script = ExtResource("1_eaneu")
 contenedor_piedras = NodePath("ContenedorPiedras")
 contenedor_mob = NodePath("ContenedorMobs")
+tile_map_nivel = NodePath("Nivel")
+array_tiles_relleno = Array[Vector2i]([Vector2i(22, 0), Vector2i(23, 0), Vector2i(24, 0), Vector2i(22, 1), Vector2i(23, 1), Vector2i(24, 1), Vector2i(21, 2), Vector2i(22, 2), Vector2i(23, 2), Vector2i(24, 2), Vector2i(21, 3), Vector2i(22, 3), Vector2i(23, 3), Vector2i(24, 3)])
 
 [node name="ColorRect" type="ColorRect" parent="."]
 z_index = -2
