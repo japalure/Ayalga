@@ -23,7 +23,7 @@ const TILE_ATLAS_A_CAMBIAR := Vector2i(1, 3)
 func _ready() -> void:
 	#info()
 	await get_tree().process_frame
-	reemplazar_1_de_cada_10_tiles()
+	reemplazar_tiles()
 	
 func _process(_delta: float) -> void:
 	pass
@@ -31,7 +31,8 @@ func _process(_delta: float) -> void:
 func setup(id: int):
 	id_segmento = id
 
-func reemplazar_1_de_cada_10_tiles():
+
+func reemplazar_tiles():
 	if !rellenar_fondos:
 		return
 	if tile_map_nivel == null:
