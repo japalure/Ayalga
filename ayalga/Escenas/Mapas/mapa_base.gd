@@ -82,9 +82,13 @@ func generar_nivel(nivel: int) -> void:
 	if nivel == 0:
 		segmentos_activos.append(segmento_inicial.instantiate())
 		
-	# i = 1 a 10 o size-1 (el menor)
-	for i in range(0, min(9, pool_segmentos_normal.size())):
-		var seg: Segmento = pool_segmentos_normal[i]
+	## i = 1 a 10 o size-1 (el menor)
+	#for i in range(0, min(9, pool_segmentos_normal.size())):
+		#var seg: Segmento = pool_segmentos_normal[i]
+		#segmentos_activos.append(seg)
+	var n_segmentos: int = 10
+	for i in n_segmentos:
+		var seg: Segmento = pool_segmentos_normal.pick_random().duplicate()
 		segmentos_activos.append(seg)
 	segmentos_activos.append(pool_segmentos_checkpoint[0])
 	add_segmentos_mapa()

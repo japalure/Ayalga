@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://b28mcildpeh7k" path="res://Escenas/Mapas/Segmentos/SegmentoBase.tscn" id="1_ju813"]
 [ext_resource type="Script" path="res://Escenas/Mapas/mapa_base.gd" id="1_qp2df"]
-[ext_resource type="PackedScene" uid="uid://b7udqrjl4r6rn" path="res://Segmentos/INICIAL.tscn" id="2_pqx5c"]
+[ext_resource type="PackedScene" uid="uid://dhtfwpjh56o" path="res://Segmentos/INICIAL_2.tscn" id="2_sx1og"]
 [ext_resource type="PackedScene" uid="uid://biunbedr5twrd" path="res://Escenas/Mapas/Fondo/parallax_background.tscn" id="4_7i4lr"]
 
 [node name="MapaBase" type="Control" node_paths=PackedStringArray("segmento", "contenedor_segmentos")]
@@ -12,7 +12,7 @@ anchors_preset = 0
 script = ExtResource("1_qp2df")
 segmento = NodePath("ContenedorSegmentos/SegmentoBase")
 contenedor_segmentos = NodePath("ContenedorSegmentos")
-segmento_inicial = ExtResource("2_pqx5c")
+segmento_inicial = ExtResource("2_sx1og")
 
 [node name="ContenedorSegmentos" type="Control" parent="."]
 anchors_preset = 0
@@ -25,9 +25,10 @@ offset_right = 620.0
 offset_bottom = 736.0
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
-self_modulate = Color(0.929715, 0.929715, 0.929715, 1)
+self_modulate = Color(1, 1, 1, 0)
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="ParallaxBackground" parent="PanelContainer" instance=ExtResource("4_7i4lr")]
+color = Color(0.33177, 0.331303, 0.415095, 1)

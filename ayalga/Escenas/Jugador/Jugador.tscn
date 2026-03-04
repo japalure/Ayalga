@@ -7,7 +7,7 @@
 size = Vector2(27, 41)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0pqwy"]
-size = Vector2(37, 43)
+size = Vector2(37, 45)
 
 [node name="Jugador" type="CharacterBody2D" node_paths=PackedStringArray("animacion", "area_daño", "raycast_suelo")]
 collision_layer = 8
@@ -33,7 +33,7 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AreaDaño"]
-position = Vector2(2.5, 3.5)
+position = Vector2(2.5, 4.5)
 shape = SubResource("RectangleShape2D_0pqwy")
 
 [node name="RayCast2D" type="RayCast2D" parent="."]

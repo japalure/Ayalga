@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://bm0gkoj60cate"]
+
+[ext_resource type="SpriteFrames" uid="uid://bihsfe0kh40i8" path="res://Assets/Mapas/Inicio/Hoguera/hoguera.tres" id="1_hxfsi"]
+[ext_resource type="Script" path="res://Assets/Mapas/Inicio/Hoguera/hoguera.gd" id="2_1lu4h"]
+
+[node name="Hoguera" type="AnimatedSprite2D"]
+position = Vector2(318, 161)
+sprite_frames = ExtResource("1_hxfsi")
+animation = &"Hoguera"
+frame_progress = 0.871009
+script = ExtResource("2_1lu4h")

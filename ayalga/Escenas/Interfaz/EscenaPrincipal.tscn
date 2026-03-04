@@ -59,7 +59,7 @@ script = ExtResource("5_3abcs")
 personaje = NodePath("../Personaje")
 
 [node name="Personaje" parent="PanelEscenaPrincipal" instance=ExtResource("4_ijraw")]
-position = Vector2(275, 226)
+position = Vector2(277, 205)
 
 [node name="PanelDch" type="PanelContainer" parent="."]
 self_modulate = Color(1, 1, 1, 0)

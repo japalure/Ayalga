@@ -13,7 +13,6 @@
 offset = Vector2(640, 0)
 transform = Transform2D(1, 0, 0, 1, 640, 0)
 script = ExtResource("1_63jwp")
-color = Color(0.265295, 0.357869, 0.623624, 1)
 
 [node name="capa 8" type="ParallaxLayer" parent="."]
 motion_scale = Vector2(1, 0.1)
