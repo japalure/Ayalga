@@ -1,12 +1,14 @@
-[gd_scene load_steps=8 format=3 uid="uid://dw3eofudejxvj"]
+[gd_scene load_steps=10 format=3 uid="uid://dw3eofudejxvj"]
 
 [ext_resource type="Script" path="res://Escenas/Interfaz/controlador_juego.gd" id="1_tt8ux"]
+[ext_resource type="Resource" uid="uid://gcej1qqreflq" path="res://Resources/partida.tres" id="2_3h4qn"]
 [ext_resource type="PackedScene" uid="uid://bhsh32jq8x0el" path="res://Escenas/Interfaz/Etiquetas/contador_piedras.tscn" id="2_ulici"]
 [ext_resource type="PackedScene" uid="uid://ch6ldcmvereei" path="res://Escenas/Interfaz/Etiquetas/distancia_recorrida.tscn" id="3_k8yys"]
 [ext_resource type="PackedScene" uid="uid://dje07y2uqw5jv" path="res://Escenas/Jugador/Jugador.tscn" id="4_ijraw"]
 [ext_resource type="AudioStream" uid="uid://cl6ypqvfno1uh" path="res://Assets/Musica/Pal pozo-02-04-2026.wav" id="4_tj6q0"]
 [ext_resource type="PackedScene" uid="uid://dnasp4ev4rv33" path="res://Escenas/Interfaz/camera_2d.tscn" id="5_0f3pd"]
 [ext_resource type="Script" path="res://Escenas/Interfaz/camera_2d.gd" id="5_3abcs"]
+[ext_resource type="Script" path="res://Escenas/Interfaz/controlador_pausa.gd" id="9_o83ux"]
 
 [node name="EscenaPrincipal" type="Control" node_paths=PackedStringArray("personaje", "camara")]
 layout_mode = 3
@@ -14,6 +16,7 @@ anchors_preset = 0
 script = ExtResource("1_tt8ux")
 personaje = NodePath("PanelEscenaPrincipal/Personaje")
 camara = NodePath("PanelEscenaPrincipal/Camera2D")
+partida = ExtResource("2_3h4qn")
 
 [node name="PanelIzq" type="PanelContainer" parent="."]
 self_modulate = Color(1, 1, 1, 0)
@@ -59,7 +62,7 @@ script = ExtResource("5_3abcs")
 personaje = NodePath("../Personaje")
 
 [node name="Personaje" parent="PanelEscenaPrincipal" instance=ExtResource("4_ijraw")]
-position = Vector2(277, 205)
+position = Vector2(206, 299)
 
 [node name="PanelDch" type="PanelContainer" parent="."]
 self_modulate = Color(1, 1, 1, 0)
@@ -72,3 +75,7 @@ metadata/_edit_lock_ = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_tj6q0")
+
+[node name="ControladorPausa" type="Node" parent="."]
+process_mode = 3
+script = ExtResource("9_o83ux")

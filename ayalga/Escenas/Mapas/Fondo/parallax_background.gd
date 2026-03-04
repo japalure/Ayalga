@@ -10,6 +10,6 @@ func _ready() -> void:
 	
 # Cambia la tonalidad de todas las capas usando el color del inspector
 func modular_todas_capas() -> void:
-	for layer in padre.get_children():
-		if layer and layer is ParallaxLayer:
-			layer.modulate = color
+	for _layer in padre.get_children():
+		if _layer and _layer is ParallaxLayer:
+			_layer.modulate = color

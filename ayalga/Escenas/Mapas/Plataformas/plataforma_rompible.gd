@@ -8,7 +8,7 @@ var tiempo = 1
 func _ready():
 	set_process(false)
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	tiempo += 1
 	sprite.position += Vector2(0, sin(tiempo) * 2)
 	

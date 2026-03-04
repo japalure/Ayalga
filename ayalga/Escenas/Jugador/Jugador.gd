@@ -136,6 +136,7 @@ func cambio_animacion() -> void:
 
 func _on_area_daño_body_entered(_body: Node2D) -> void:
 	muerte()
+	ControladorJuego.guardar_partida()
 
 func muerte() -> void:
 	print("muerto")

@@ -8,5 +8,5 @@ func _ready() -> void:
 
 
 func actualizar_texto() -> void:
-	label.text = "Piedras: " +str(ControladorJuego.piedras_recogidas)
+	label.text = "Piedras: " +str(ControladorJuego.piedras_recogidas) 
 	
