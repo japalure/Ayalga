@@ -1,12 +1,14 @@
 class_name Piedra
-extends Node2D
+extends Control
 
 # Identificador único de la piedra mientras dure la sesión
-@export var id: int = 0
+static var next_id: int = 0
+var id: int
 # Textura / sprite asociado al tier (se puede asignar en el editor)
 @export var skin: TileMapLayer
 @export var tile_map_id: int
 @export var area_2d: Area2D
+@export var en_mochila: bool = false
 
 var ContenedorPiedra: ContenedorPiedras #Esta referencia se resuelve dentro de ContenedorPiedras
 
@@ -26,14 +28,29 @@ var ContenedorPiedra: ContenedorPiedras #Esta referencia se resuelve dentro de C
 
 func _ready() -> void:
 	# ID único durante esta sesión	
-	id = get_instance_id()  
+	id = next_id
+	next_id += 1
+	#print("Instancia creada con ID: ", id)
 	area_2d.body_entered.connect(recogida)
 	aplicar_skin(randi_range(0, 3))
 
 func recogida(_body):
+	if en_mochila:
+		return
+	await self.no_recogible()
 	ControladorJuego.sumar_piedra()
+	if _body is Jugador:
+		await _body.pasar_piedra_mochila(self)
+	
+	await get_tree().process_frame  
 	queue_free()
 
+func no_recogible():
+	en_mochila = true
+	area_2d.visible = false
+	if area_2d.body_entered.is_connected(recogida):
+		area_2d.body_entered.disconnect(recogida)
+	
 #cambia el tile de la piedra 
 func aplicar_skin(indice: int):
 	skin.set_cell(

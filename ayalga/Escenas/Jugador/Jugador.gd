@@ -4,6 +4,7 @@ extends CharacterBody2D
 @export var animacion: AnimatedSprite2D
 @export var area_daño: Area2D
 @export var raycast_suelo: RayCast2D
+@onready var mochila: Mochila = $Mochila
 
 
 #movimiento
@@ -24,6 +25,7 @@ var posicion_y_inicial: float
 func _ready() -> void:
 	await get_tree().process_frame  # Espera 1 frame para que global_position sea válido
 	await get_tree().process_frame
+	ControladorJuego.referencia_jugador(self)
 	area_daño.body_entered.connect(_on_area_daño_body_entered)
 	distancia_recorrida = 0.0
 	posicion_y_inicial = global_position.y
@@ -137,6 +139,10 @@ func cambio_animacion() -> void:
 func _on_area_daño_body_entered(_body: Node2D) -> void:
 	muerte()
 	ControladorJuego.guardar_partida()
+
+func pasar_piedra_mochila(piedra_recogida) -> void:
+	await mochila.anadir_piedra(piedra_recogida)
+
 
 func muerte() -> void:
 	print("muerto")

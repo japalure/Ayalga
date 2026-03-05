@@ -6,16 +6,15 @@
 [ext_resource type="PackedScene" uid="uid://ch6ldcmvereei" path="res://Escenas/Interfaz/Etiquetas/distancia_recorrida.tscn" id="3_k8yys"]
 [ext_resource type="PackedScene" uid="uid://dje07y2uqw5jv" path="res://Escenas/Jugador/Jugador.tscn" id="4_ijraw"]
 [ext_resource type="AudioStream" uid="uid://cl6ypqvfno1uh" path="res://Assets/Musica/Pal pozo-02-04-2026.wav" id="4_tj6q0"]
-[ext_resource type="PackedScene" uid="uid://dnasp4ev4rv33" path="res://Escenas/Interfaz/camera_2d.tscn" id="5_0f3pd"]
+[ext_resource type="PackedScene" path="res://Escenas/Interfaz/camera_2d.tscn" id="5_0f3pd"]
 [ext_resource type="Script" path="res://Escenas/Interfaz/camera_2d.gd" id="5_3abcs"]
 [ext_resource type="Script" path="res://Escenas/Interfaz/controlador_pausa.gd" id="9_o83ux"]
 
-[node name="EscenaPrincipal" type="Control" node_paths=PackedStringArray("personaje", "camara")]
+[node name="EscenaPrincipal" type="Control" node_paths=PackedStringArray("jugador")]
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_tt8ux")
-personaje = NodePath("PanelEscenaPrincipal/Personaje")
-camara = NodePath("PanelEscenaPrincipal/Camera2D")
+jugador = NodePath("PanelEscenaPrincipal/Jugador")
 partida = ExtResource("2_3h4qn")
 
 [node name="PanelIzq" type="PanelContainer" parent="."]
@@ -59,9 +58,9 @@ metadata/_edit_lock_ = true
 [node name="Camera2D" parent="PanelEscenaPrincipal" node_paths=PackedStringArray("personaje") instance=ExtResource("5_0f3pd")]
 position = Vector2(320, 360)
 script = ExtResource("5_3abcs")
-personaje = NodePath("../Personaje")
+personaje = NodePath("../Jugador")
 
-[node name="Personaje" parent="PanelEscenaPrincipal" instance=ExtResource("4_ijraw")]
+[node name="Jugador" parent="PanelEscenaPrincipal" instance=ExtResource("4_ijraw")]
 position = Vector2(206, 299)
 
 [node name="PanelDch" type="PanelContainer" parent="."]

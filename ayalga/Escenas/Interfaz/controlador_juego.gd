@@ -6,11 +6,10 @@ extends Control
 
 ## Nodos
 var mapa:Mapa
-@export var personaje: CharacterBody2D
-@export var camara: Camera2D
+@export var jugador: Jugador
 
 ## Variables de juego
-signal piedra_recogida
+signal piedra_recogida #señal para actualizar label
 var piedras_recogidas:int = 0
 var record_piedras:int 
 signal distancia_actualizada
@@ -26,6 +25,7 @@ func _ready() -> void:
 	await get_tree().process_frame
 	cargar_partida()
 	nuevo_mapa() #en el futuro añadir semilla
+	
 
 ## Constructores
 # Carga un nuevo mapa 
@@ -38,12 +38,23 @@ func nuevo_mapa() -> void:
 	mapa = mapa_scene.instantiate() as Mapa
 	panel_principal.add_child(mapa)                      
 
+func referencia_jugador(j:Jugador) -> void:
+	if j is Jugador and j:
+		jugador = j
+	else:
+		push_error("Fallo al pasar referencia de jugador.")
+		
+	
+		
 ## Lógica del juego
 func sumar_piedra() -> void:
 	piedras_recogidas += 1
 	if piedras_recogidas > record_piedras:
 		record_piedras = piedras_recogidas
 	piedra_recogida.emit()
+	
+
+	
 
 #Personaje llama a esta función para actualizar la distancia por pantalla
 func actualizar_distancia(nueva_distancia: float) -> void:
