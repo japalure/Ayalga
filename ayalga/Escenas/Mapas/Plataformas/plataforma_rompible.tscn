@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://b30oibkddbys4"]
 
 [ext_resource type="Script" path="res://Escenas/Mapas/Plataformas/plataforma_rompible.gd" id="1_mqn2s"]
-[ext_resource type="TileSet" uid="uid://bjghdq4mlvcqf" path="res://Assets/tile_map_cueva.tres" id="2_bdqpn"]
+[ext_resource type="TileSet" uid="uid://dtbbt0qjph488" path="res://Assets/tile_map_cueva.tres" id="2_bdqpn"]
 [ext_resource type="Texture2D" uid="uid://b8siuvgn7vbal" path="res://Assets/Mapas/Plataformas/particulas.png" id="3_e675w"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ijgrk"]

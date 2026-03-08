@@ -6,6 +6,7 @@ static var next_id: int = 0
 var id: int
 # Textura / sprite asociado al tier (se puede asignar en el editor)
 @export var skin: TileMapLayer
+var indice_skin: int
 @export var tile_map_id: int
 @export var area_2d: Area2D
 @export var en_mochila: bool = false
@@ -56,8 +57,18 @@ func no_recogible():
 	
 #cambia el tile de la piedra 
 func aplicar_skin(indice: int):
+	indice_skin = indice
 	skin.set_cell(
 		Vector2i(0, -1),
 		tile_map_id,
 		Vector2i(indice, 9)
+	)
+
+# No rota
+func rotar_skin() -> void:
+	skin.set_cell(
+		Vector2i(0, -1),
+		tile_map_id,
+		Vector2i(indice_skin, 9),
+		TileSetAtlasSource.TRANSFORM_FLIP_V | TileSetAtlasSource.TRANSFORM_FLIP_H
 	)

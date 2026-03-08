@@ -18,8 +18,8 @@ func _physics_process(delta: float) -> void:
 		return
 	movimiento(delta)
 	
-func movimiento(delta:float) -> void:
-	velocity = direccion * daño
+func movimiento(_delta:float) -> void:
+	velocity = direccion * velocidad
 	move_and_slide()
 
 # Detecta cuando el jugador está en rango

@@ -27,10 +27,11 @@ func _ready() -> void:
 	await get_tree().process_frame  # Espera 1 frame para que global_position sea válido
 	await get_tree().process_frame
 	ControladorJuego.referencia_jugador(self)
-	area_daño.body_entered.connect(_on_area_daño_body_entered)
+	#area_daño.body_entered.connect(_on_area_daño_body_entered)
 	distancia_recorrida = 0.0
 	posicion_y_inicial = global_position.y
-func _process(delta: float) -> void:
+	
+func _process(_delta: float) -> void:
 	await get_tree().process_frame
 	
 	
@@ -57,13 +58,13 @@ func peso_actual() -> int:
 
 ##---------------------------Interacciones escenario---------------------------##
 func pasar_piedra_mochila(piedra_recogida) -> void:
-	await mochila.anadir_piedra(piedra_recogida)
+	mochila.anadir_piedra(piedra_recogida)
 
 # Golpe contra escenario
 func _on_area_daño_body_entered(body: Node2D) -> void:
 	if body and body is not Mob:
 		#print ("Jugador recibe daño de escenario")
-		await self.recibe_daño(1)
+		self.recibe_daño(1)
 		rebotar()
 ##---------------------------Funciones de Movimiento---------------------------##
 # Maneja movimiento flechas izquierda y derecha
@@ -157,7 +158,7 @@ func recibe_daño_mob(mob: Mob) -> void:
 # Pierdes piedras igual al daño recibido y si no tienes mueres
 func recibe_daño(d:int) -> void:
 	if mochila.n_piedras() > 0:
-		await mochila.perder_piedras(d)
+		mochila.perder_piedras(d)
 	else:
 		muerte()
 	

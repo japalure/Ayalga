@@ -8,7 +8,7 @@
 size = Vector2(27, 41)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0pqwy"]
-size = Vector2(44, 48)
+size = Vector2(30, 41)
 
 [node name="Jugador" type="CharacterBody2D" node_paths=PackedStringArray("animacion", "area_daño", "raycast_suelo")]
 collision_layer = 8
@@ -34,16 +34,16 @@ collision_layer = 8
 collision_mask = 34
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AreaDaño"]
-position = Vector2(4, 4)
+position = Vector2(3, 4.5)
 shape = SubResource("RectangleShape2D_0pqwy")
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 target_position = Vector2(0, 35)
 
 [node name="Mochila" parent="." instance=ExtResource("3_3v7k1")]
-offset_left = 11.0
-offset_top = 12.0
-offset_right = 11.0
-offset_bottom = 12.0
+offset_left = 5.0
+offset_top = 11.0
+offset_right = 5.0
+offset_bottom = 11.0
 
 [connection signal="body_entered" from="AreaDaño" to="." method="_on_area_daño_body_entered"]

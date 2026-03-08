@@ -7,11 +7,11 @@ extends Control
 
 
 func _ready():
-	pass
+	vbox.rotation = deg_to_rad(180) #La mochila se rota para que la piedra en la pos 0 sea la de abajo
 
 func _process(_delta: float) -> void:
 	await get_tree().process_frame
-	await recalcular_posicion()
+	recalcular_posicion()
 
 ##-----------------------------Funciones de estado-----------------------------##
 func n_piedras() -> int:
@@ -20,21 +20,23 @@ func n_piedras() -> int:
 ##-----------------------------Funciones visuales-----------------------------##
 # Recalcula la posición del vbox dependiendo del número de piedras que tenga la mochila
 func recalcular_posicion() -> void:
-	var piedra_size_y:int  = 32
-	var separacion = vbox.get_theme_constant("separation", "VBoxContainer")
-	vbox.position.y = - n_piedras() * (piedra_size_y + separacion)
+	#var piedra_size_y:int  = 32
+	#var separacion = vbox.get_theme_constant("separation", "VBoxContainer")
+	#vbox.position.y = - n_piedras() * (piedra_size_y + separacion)
+	pass
 
 
 ##-----------------------------Gestión de piedras-----------------------------##
 # Añade la piedra al vbox en primera posición y sube la posición del vbox para que se mantenga centrado
 func anadir_piedra(piedra_recogida: Piedra) -> void:
 	if n_piedras() < tam_max:
-		var nueva_piedra = await duplicar_piedra(piedra_recogida)
+		var nueva_piedra = duplicar_piedra(piedra_recogida)
 
-		vbox.add_child(nueva_piedra)
-		vbox.move_child(nueva_piedra, 0)
-
-		await recalcular_posicion()
+		
+		vbox.call_deferred("add_child", nueva_piedra)
+		vbox.call_deferred("move_child", nueva_piedra, 0)
+		
+		recalcular_posicion()
 		ControladorJuego.sumar_piedra()
 	else:
 		#print("Mochila llena")
@@ -48,6 +50,7 @@ func duplicar_piedra(p: Piedra) -> Piedra:
 	nueva_piedra.position = Vector2.ZERO
 	nueva_piedra.id = p.id
 	nueva_piedra.skin = p.skin
+	#nueva_piedra.rotar_skin() #Rotar skin para compensar rotación vbox
 	
 	p.eliminarse()
 	
@@ -58,7 +61,7 @@ func perder_piedras(n:int) -> void:
 	for i in range(0, n):
 		if n_piedras() <= 0:
 			return
-		await eliminar_piedra(-1, 0)
+		eliminar_piedra(-1, 0)
 
 # Quitar piedra de la mochila por posición de la piedra o por id
 func eliminar_piedra(id:int = -1, pos:int = -1) -> void:
@@ -74,4 +77,4 @@ func eliminar_piedra(id:int = -1, pos:int = -1) -> void:
 		#vbox.get_children()[pos].queue_free()
 		vbox.get_child(pos).queue_free()
 		
-	await recalcular_posicion()
+	recalcular_posicion()
