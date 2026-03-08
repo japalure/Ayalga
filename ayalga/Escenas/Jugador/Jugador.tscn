@@ -2,13 +2,13 @@
 
 [ext_resource type="Script" path="res://Escenas/Jugador/Jugador.gd" id="1_1davp"]
 [ext_resource type="SpriteFrames" uid="uid://12fao12e4s73" path="res://Assets/Jugador/sprite_frames_personaje.tres" id="2_h30nl"]
-[ext_resource type="PackedScene" path="res://Escenas/Jugador/Mochila.tscn" id="3_3v7k1"]
+[ext_resource type="PackedScene" uid="uid://jxvp4266ojwj" path="res://Escenas/Jugador/Mochila.tscn" id="3_3v7k1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sn41b"]
 size = Vector2(27, 41)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0pqwy"]
-size = Vector2(37, 45)
+size = Vector2(44, 48)
 
 [node name="Jugador" type="CharacterBody2D" node_paths=PackedStringArray("animacion", "area_daño", "raycast_suelo")]
 collision_layer = 8
@@ -30,20 +30,20 @@ position = Vector2(3.5, 4.5)
 shape = SubResource("RectangleShape2D_sn41b")
 
 [node name="AreaDaño" type="Area2D" parent="."]
-collision_layer = 0
-collision_mask = 2
+collision_layer = 8
+collision_mask = 34
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AreaDaño"]
-position = Vector2(2.5, 4.5)
+position = Vector2(4, 4)
 shape = SubResource("RectangleShape2D_0pqwy")
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 target_position = Vector2(0, 35)
 
 [node name="Mochila" parent="." instance=ExtResource("3_3v7k1")]
-offset_left = -12.0
-offset_top = -6.0
-offset_right = -12.0
-offset_bottom = -6.0
+offset_left = 11.0
+offset_top = 12.0
+offset_right = 11.0
+offset_bottom = 12.0
 
 [connection signal="body_entered" from="AreaDaño" to="." method="_on_area_daño_body_entered"]

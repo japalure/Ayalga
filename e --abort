@@ -1,0 +1,36 @@
+[33mbfdad82[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m Añadido Recogida de piedras
+[33m82b2944[m tile map cuevas
+[33ma8358c8[m Añadido Guardado y pausa
+[33md1eafc3[m Añadido Tileset y fondo para NUEVO INICIO
+[33mc224a80[m Añadido FONDO CON EFECTO PARALLAX
+[33m76c1e82[m Relleno de fondos automático
+[33mee4286f[m Cambios en Tilemap
+[33m4625239[m añadido pixil
+[33me8429c5[m última estable
+[33md5b507d[m Nuevo tilemap
+[33m9c21e40[m Actualizado tileset y añadido plataforma rompible
+[33me73f841[m Añdido gitattributes
+[33m028a919[m Añadido Contador de distancia
+[33me37d9ac[m Quitar ./godot de ser commiteado
+[33m6ad60b9[m .gitignore
+[33m105bf61[m PArece ser que está todo xddd
+[33mef63a6e[m[33m ([m[1;32mJugador[m[33m)[m Merge remote-tracking branch 'origin/main'
+[33m81c8775[m prueba4
+[33m5846c53[m Merge remote-tracking branch 'origin/main'
+[33m45e9749[m prueba3
+[33m774119b[m Merge remote-tracking branch 'origin/main'
+[33ma837f5d[m Merge branch 'Jugador'
+[33mb04a8d4[m Contador de piedras
+[33m2a519de[m prueba2
+[33maebff3c[m Prueba
+[33mc86d9ad[m[33m ([m[1;32mMapas[m[33m)[m Después del desastre
+[33m1e31b91[m[33m ([m[1;31morigin/Jugador[m[33m)[m Culetazo versión 1
+[33m7e91dbe[m[33m ([m[1;32mPersonaje[m[33m)[m Camara
+[33m870d05e[m Segmentos de prueba
+[33m32289e6[m MapaBase
+[33mb5e8a4a[m Contenedor de piedras
+[33m43951e4[m actualización 4.6
+[33mc81b7f9[m rf
+[33mcabe47b[m Lógica de movimiento del personaje
+[33m4465ca4[m Archivos de godot
+[33mde91ea2[m Add files via upload

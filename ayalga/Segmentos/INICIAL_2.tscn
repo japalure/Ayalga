@@ -1,13 +1,15 @@
-[gd_scene load_steps=11 format=4 uid="uid://dhtfwpjh56o"]
+[gd_scene load_steps=13 format=4 uid="uid://dhtfwpjh56o"]
 
 [ext_resource type="PackedScene" uid="uid://b28mcildpeh7k" path="res://Escenas/Mapas/Segmentos/SegmentoBase.tscn" id="1_wwm4y"]
 [ext_resource type="Texture2D" uid="uid://bulsx0iyyaigi" path="res://Assets/Mapas/Inicio/Tileset.png" id="2_15e8g"]
 [ext_resource type="Texture2D" uid="uid://dl2vq6rsu4fxr" path="res://Assets/Mapas/Inicio/Fondo/inicio_bg_5.png" id="2_qihbd"]
 [ext_resource type="Texture2D" uid="uid://chv15acyamf3i" path="res://Assets/Mapas/Inicio/Fondo/inicio_bg_4.png" id="3_4yts8"]
+[ext_resource type="PackedScene" uid="uid://be7d8by2mekwb" path="res://Escenas/Mobs/MobBase.tscn" id="3_64jnv"]
+[ext_resource type="PackedScene" uid="uid://dd0frket3ay0e" path="res://Escenas/Recursos/Piedras/PiedraBase.tscn" id="3_a4pfb"]
 [ext_resource type="Texture2D" uid="uid://b1h4kdl8xcovs" path="res://Assets/Mapas/Inicio/Fondo/inicio_bg_3.png" id="4_45fnh"]
 [ext_resource type="Texture2D" uid="uid://bxi1kgp18v1ul" path="res://Assets/Mapas/Inicio/Fondo/inicio_bg_2.png" id="5_hqnrq"]
 [ext_resource type="Texture2D" uid="uid://bfpth8i5c8r6t" path="res://Assets/Mapas/Inicio/Fondo/inicio_bg_1.png" id="6_sov1x"]
-[ext_resource type="PackedScene" uid="uid://bm0gkoj60cate" path="res://Assets/Mapas/Inicio/Hoguera/hoguera.tscn" id="8_2uqqq"]
+[ext_resource type="PackedScene" path="res://Assets/Mapas/Inicio/Hoguera/hoguera.tscn" id="8_2uqqq"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nw6id"]
 texture = ExtResource("2_15e8g")
@@ -126,7 +128,19 @@ z_index = -2
 tile_map_data = PackedByteArray("AAAIABUAAAANAAEAAAAAABUAAAAIAAAAAAABABUAAAAJAAAAAAACABUAAAAJAAAAAAADABUAAAAJAAAAAAAEABUAAAAJAAAAAAAFABUAAAAJAAAAAAAGABUAAAAJAAAAAAAHABUAAAAJAAAAAAALABUAAAAMAAEAAAAMABUAAAAJAAAAAAANABUAAAAKAAAAAAAOABUAAAAJAAAAAAAPABUAAAAKAAAAAAAQABUAAAAJAAAAAAARABUAAAAKAAAAAAASABUAAAAJAAAAAAATABUAAAALAAAAAAATABYAAAALAAIAAAAAABYAAAAIAAIAAAD+//3/AAASAAIAAAD+//7/AAASAAIAAAD+////AAASAAIAAAD+/wAAAAASAAIAAAD+/wEAAAASAAIAAAD+/wIAAAASAAIAAAD+/wMAAAASAAIAAAD+/wQAAAASAAIAAAD+/wUAAAASAAIAAAD+/wYAAAASAAIAAAD+/wcAAAASAAIAAAD+/wgAAAASAAIAAAD+/wkAAAASAAIAAAD+/woAAAASAAIAAAD+/wsAAAASAAIAAAD+/wwAAAASAAIAAAD+/w0AAAASAAIAAAD+/w4AAAASAAIAAAD+/w8AAAASAAIAAAD+/xAAAAASAAIAAAD+/xEAAAASAAIAAAD+/xIAAAASAAIAAAD+/xMAAAASAAIAAAD+/xQAAAASAAIAAAD+/xUAAAASAAIAAAD+/xYAAAASAAIAAAAVABUAAAATAAIAAAAVABYAAAATAAIAAAAVABQAAAATAAIAAAAVABMAAAATAAIAAAAVABIAAAATAAIAAAAVABEAAAATAAIAAAAVABAAAAATAAIAAAAVAA8AAAATAAIAAAAVAA4AAAATAAIAAAAVAA0AAAATAAIAAAAVAAwAAAATAAIAAAAVAAsAAAATAAIAAAAVAAoAAAATAAIAAAAVAAkAAAATAAIAAAAVAAgAAAATAAIAAAAVAAcAAAATAAIAAAAVAAYAAAATAAIAAAAVAAUAAAATAAIAAAAVAAQAAAATAAIAAAAVAAMAAAATAAIAAAAVAAIAAAATAAIAAAAVAAEAAAATAAIAAAAVAAAAAAATAAIAAAAVAP//AAATAAIAAAAVAP7/AAATAAIAAAAVAP3/AAATAAIAAAD///z/AAATAAIAAGAAAPz/AAATAAIAAGABAPz/AAATAAIAAGACAPz/AAATAAIAAGADAPz/AAATAAIAAGAEAPz/AAATAAIAAGAFAPz/AAATAAIAAGAGAPz/AAATAAIAAGAHAPz/AAATAAIAAGAIAPz/AAATAAIAAGAJAPz/AAATAAIAAGAKAPz/AAATAAIAAGALAPz/AAATAAIAAGAMAPz/AAATAAIAAGANAPz/AAATAAIAAGAOAPz/AAATAAIAAGAPAPz/AAATAAIAAGAQAPz/AAATAAIAAGARAPz/AAATAAIAAGASAPz/AAATAAIAAGATAPz/AAATAAIAAGAUAPz/AAATAAIAAGA=")
 
 [node name="PiedraBase" parent="ContenedorPiedras" index="0"]
-position = Vector2(320, 567)
+offset_left = 320.0
+offset_top = 567.0
+offset_right = 352.0
+offset_bottom = 599.0
+
+[node name="PiedraBase2" parent="ContenedorPiedras" index="1" instance=ExtResource("3_a4pfb")]
+offset_left = 158.0
+offset_top = 317.0
+offset_right = 190.0
+offset_bottom = 349.0
+
+[node name="Enemigo" parent="ContenedorPiedras" index="2" instance=ExtResource("3_64jnv")]
+position = Vector2(423, 312)
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="." index="6"]
 scroll_offset = Vector2(640, 0)

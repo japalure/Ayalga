@@ -38,13 +38,16 @@ func recogida(_body):
 	if en_mochila:
 		return
 	await self.no_recogible()
-	ControladorJuego.sumar_piedra()
+	
 	if _body is Jugador:
 		await _body.pasar_piedra_mochila(self)
 	
-	await get_tree().process_frame  
-	queue_free()
-
+		await get_tree().process_frame  
+	#La piedra la borra mochila
+	
+func eliminarse() -> void:
+	self.queue_free()
+	
 func no_recogible():
 	en_mochila = true
 	area_2d.visible = false

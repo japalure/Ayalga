@@ -84,6 +84,7 @@ pausa={
 2d_physics/layer_3="Recolectable"
 2d_physics/layer_4="Jugador"
 2d_physics/layer_5="Rompible"
+2d_physics/layer_6="Enemigo"
 
 [rendering]
 

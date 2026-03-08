@@ -2,30 +2,76 @@ class_name Mochila
 extends Control
 
 @onready var vbox: VBoxContainer = $VBoxContainer
+@export var tam_max: int  = 10
+
+
 
 func _ready():
 	pass
 
 func _process(_delta: float) -> void:
-	pass
+	await get_tree().process_frame
+	await recalcular_posicion()
 
+##-----------------------------Funciones de estado-----------------------------##
+func n_piedras() -> int:
+	return vbox.get_children().size()
+
+##-----------------------------Funciones visuales-----------------------------##
+# Recalcula la posición del vbox dependiendo del número de piedras que tenga la mochila
+func recalcular_posicion() -> void:
+	var piedra_size_y:int  = 32
+	var separacion = vbox.get_theme_constant("separation", "VBoxContainer")
+	vbox.position.y = - n_piedras() * (piedra_size_y + separacion)
+
+
+##-----------------------------Gestión de piedras-----------------------------##
 # Añade la piedra al vbox en primera posición y sube la posición del vbox para que se mantenga centrado
 func anadir_piedra(piedra_recogida: Piedra) -> void:
-	var nueva_piedra = await duplicar_piedra(piedra_recogida)
-	vbox.call_deferred("add_child", nueva_piedra)
-	await get_tree().process_frame
-	vbox.move_child(nueva_piedra, 0)
-	vbox.queue_sort()  # Reordena hijos
-	var separacion = vbox.get_theme_constant("separation", "VBoxContainer")
-	vbox.position.y = vbox.position.y - nueva_piedra.custom_minimum_size.y - separacion
+	if n_piedras() < tam_max:
+		var nueva_piedra = await duplicar_piedra(piedra_recogida)
+
+		vbox.add_child(nueva_piedra)
+		vbox.move_child(nueva_piedra, 0)
+
+		await recalcular_posicion()
+		ControladorJuego.sumar_piedra()
+	else:
+		#print("Mochila llena")
+		pass
 
 # Crea una copia
 func duplicar_piedra(p: Piedra) -> Piedra:
 	var nueva_piedra = p.duplicate()
-	await p.no_recogible()
-	await get_tree().process_frame  
+	
+	nueva_piedra.no_recogible()
 	nueva_piedra.position = Vector2.ZERO
 	nueva_piedra.id = p.id
 	nueva_piedra.skin = p.skin
-	return nueva_piedra
 	
+	p.eliminarse()
+	
+	return nueva_piedra
+
+# Elimna las n piedras más abajo de la mochila
+func perder_piedras(n:int) -> void:
+	for i in range(0, n):
+		if n_piedras() <= 0:
+			return
+		await eliminar_piedra(-1, 0)
+
+# Quitar piedra de la mochila por posición de la piedra o por id
+func eliminar_piedra(id:int = -1, pos:int = -1) -> void:
+	if id < 0 and pos < 0:
+		push_error("id y pos en eliminar_piedra (Mochila) erróneas")
+		return
+	if id >= 0:
+		for piedra in vbox.get_children():
+			if piedra.id == id:
+				piedra.queue_free()
+				vbox.queue_sort()  # Reordena hijos
+	if pos >=0 and vbox.get_children().size() > pos:
+		#vbox.get_children()[pos].queue_free()
+		vbox.get_child(pos).queue_free()
+		
+	await recalcular_posicion()

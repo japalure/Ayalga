@@ -11,8 +11,3 @@ func _ready() -> void:
 		if child is Mob:
 			mobs.append(child)
 	total_mob = mobs.size()
-	
-	
-	# Le asignamos a cada piedra una referencia a este contenedor
-	for mob in mobs:
-		mob.ContenedorMobs = self 

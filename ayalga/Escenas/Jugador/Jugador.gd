@@ -8,16 +8,17 @@ extends CharacterBody2D
 
 
 #movimiento
-const _velocidad:float = 300.0
-const _velocidad_salto:float = -600.0
-var _tiempo_en_aire: float = 0.0;
+const velocidad:float = 300.0
+const velocidad_salto:float = -600.0
+var tiempo_en_aire: float = 0.0;
+var velocidad_rebote: float = -400 
 #culetazo
-var _altura_inicial_culetazo: float = 0.0
-const _distancia_culetazo:float = 200.0
-const _velocidad_culetazo:float = 300.0
+var altura_inicial_culetazo: float = 0.0
+const distancia_culetazo:float = 200.0
+const velocidad_culetazo:float = 300.0
 #estados
-var _muerto: bool = false
-var _golpeando: bool = false
+var muerto: bool = false
+var golpeando: bool = false
 #Distancia recorrida
 var distancia_recorrida: float
 var posicion_y_inicial: float
@@ -29,73 +30,85 @@ func _ready() -> void:
 	area_daño.body_entered.connect(_on_area_daño_body_entered)
 	distancia_recorrida = 0.0
 	posicion_y_inicial = global_position.y
-
+func _process(delta: float) -> void:
+	await get_tree().process_frame
+	
 	
 func _physics_process(delta: float) -> void:	
-	if _muerto:
+	if muerto:
 		return
 	# gravedad
 	if not is_on_floor():
 		velocity += get_gravity() * delta
-
 	salto()
 	culetazo()
 	movimiento_lateral()
 	move_and_slide()
 	cambio_animacion()
-	
 	sumar_distancia_bajada()
 	
 
-## Funciones de estado
+##-----------------------------Funciones de estado-----------------------------##
 func haciendo_culetazo() -> bool:
-	return _golpeando
+	return golpeando
 
-## Maneja movimiento flechas izquierda y derecha
+func peso_actual() -> int:
+	return mochila.n_piedras()
+
+##---------------------------Interacciones escenario---------------------------##
+func pasar_piedra_mochila(piedra_recogida) -> void:
+	await mochila.anadir_piedra(piedra_recogida)
+
+# Golpe contra escenario
+func _on_area_daño_body_entered(body: Node2D) -> void:
+	if body and body is not Mob:
+		#print ("Jugador recibe daño de escenario")
+		await self.recibe_daño(1)
+		rebotar()
+##---------------------------Funciones de Movimiento---------------------------##
+# Maneja movimiento flechas izquierda y derecha
 func movimiento_lateral() -> void:
-	if !_golpeando:
+	if !golpeando:
 		if Input.is_action_pressed("derecha"):
-			velocity.x = _velocidad
+			velocity.x = velocidad
 		elif Input.is_action_pressed("izquierda"):
-			velocity.x = -_velocidad
+			velocity.x = -velocidad
 		else:
-			velocity.x = move_toward(velocity.x, 0, _velocidad)
+			velocity.x = move_toward(velocity.x, 0, velocidad)
 
-
-## Manejo de salto
 func salto() -> void:
 	if Input.is_action_just_pressed("saltar") and is_on_floor():
-		velocity.y = _velocidad_salto
-		
+		velocity.y = velocidad_salto
 
-## Manejo culetazo
+func rebotar() -> void:
+	velocity.y = velocidad_rebote
+	terminar_culetazo()
+
+##-----------------------------Manejo de culetazo-----------------------------##
 func culetazo() -> void:
-	if(Input.is_action_just_pressed("culetazo") && !is_on_floor() && !_golpeando):
+	if(Input.is_action_just_pressed("culetazo") && !is_on_floor() && !golpeando):
 		iniciar_culetazo()		
-		
-	if _golpeando:
+	if golpeando:
 		procesar_culetazo()
 
 func iniciar_culetazo() ->void:
-	_golpeando = true
-	_altura_inicial_culetazo = position.y
+	golpeando = true
+	altura_inicial_culetazo = position.y
 	
 
 func procesar_culetazo()->void:
 	velocity.x = 0
-	velocity.y = _velocidad_culetazo
+	velocity.y = velocidad_culetazo
 	
-	var distancia_recorrida_culetazo = position.y - _altura_inicial_culetazo
+	var distancia_recorrida_culetazo = position.y - altura_inicial_culetazo
 	
-	if distancia_recorrida_culetazo >= _distancia_culetazo:
+	if distancia_recorrida_culetazo >= distancia_culetazo:
 		terminar_culetazo()
 	elif detectar_contacto_culetazo():
 		procesar_contacto_culetazo()
 	
 func terminar_culetazo()-> void:
-	_golpeando = false
-	
-	
+	golpeando = false
 	
 func detectar_contacto_culetazo()->bool:
 	if get_slide_collision_count() > 0:
@@ -108,21 +121,18 @@ func procesar_contacto_culetazo() ->void:
 	for i in get_slide_collision_count():
 		var collision = get_slide_collision(i)
 		var objeto = collision.get_collider()
-		print("Golpee: ", objeto.name)
+		#print("Golpee: ", objeto.name)
 		
-		if objeto.name == 'Enemigo':
-			if collision.get_normal() == Vector2.UP:
-				print("Golpee: ", objeto.name)
-				velocity.y = -300 # rebote
-				terminar_culetazo()
+		if objeto.name == 'Enemigo' and  collision.get_normal() == Vector2.UP:
+			rebotar()
 		else:
 			terminar_culetazo()
 
 # Cambia la animación del personaje dependiendo de su estaso
 func cambio_animacion() -> void:
-	if !is_on_floor() && !_golpeando:
+	if !is_on_floor() && !golpeando:
 		animacion.play("saltar")
-	elif !is_on_floor() && _golpeando:
+	elif !is_on_floor() && golpeando:
 		animacion.play("culetazo")
 	elif velocity.x != 0:
 		animacion.play("correr")
@@ -136,18 +146,26 @@ func cambio_animacion() -> void:
 		animacion.flip_h = false
 
 
-func _on_area_daño_body_entered(_body: Node2D) -> void:
-	muerte()
-	ControladorJuego.guardar_partida()
+##-----------------------------Manejo de daño-----------------------------##
+# Función llamada por la clase Mob
+func recibe_daño_mob(mob: Mob) -> void:
+	if mob:
+		recibe_daño(mob.daño)
+	else:
+		push_error("Mob no válido o null")
 
-func pasar_piedra_mochila(piedra_recogida) -> void:
-	await mochila.anadir_piedra(piedra_recogida)
-
-
+# Pierdes piedras igual al daño recibido y si no tienes mueres
+func recibe_daño(d:int) -> void:
+	if mochila.n_piedras() > 0:
+		await mochila.perder_piedras(d)
+	else:
+		muerte()
+	
 func muerte() -> void:
 	print("muerto")
-	_muerto = true
-	animacion.stop()
+	ControladorJuego.guardar_partida()
+	#_muerto = true
+	#animacion.stop()
 
 #calcula la distancia total descendida por el personaje
 func sumar_distancia_bajada() -> void:

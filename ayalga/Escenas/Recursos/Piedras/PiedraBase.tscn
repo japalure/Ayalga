@@ -1,12 +1,17 @@
 [gd_scene load_steps=4 format=3 uid="uid://dd0frket3ay0e"]
 
 [ext_resource type="Script" path="res://Escenas/Recursos/Piedras/piedra_base.gd" id="1_3esyg"]
-[ext_resource type="TileSet" uid="uid://bjghdq4mlvcqf" path="res://Assets/tile_map_cueva.tres" id="2_ls2y3"]
+[ext_resource type="TileSet" uid="uid://dtbbt0qjph488" path="res://Assets/tile_map_cueva.tres" id="2_ls2y3"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4fsbg"]
 radius = 7.80012
 
-[node name="Piedra" type="Node2D" node_paths=PackedStringArray("skin", "area_2d")]
+[node name="Piedra" type="Control" node_paths=PackedStringArray("skin", "area_2d")]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 3
+anchors_preset = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 script = ExtResource("1_3esyg")
 skin = NodePath("TileMapLayer")
 area_2d = NodePath("Area2D")
