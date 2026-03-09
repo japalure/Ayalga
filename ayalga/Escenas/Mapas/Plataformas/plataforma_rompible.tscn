@@ -36,9 +36,9 @@ shape = SubResource("RectangleShape2D_ijgrk")
 [node name="Timer" type="Timer" parent="."]
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
-visible = false
 material = SubResource("CanvasItemMaterial_q7mv4")
 position = Vector2(-31, -16)
+emitting = false
 process_material = SubResource("ParticleProcessMaterial_3qp5b")
 texture = ExtResource("3_e675w")
 

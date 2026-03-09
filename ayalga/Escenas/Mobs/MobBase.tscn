@@ -1,44 +1,33 @@
-[gd_scene load_steps=8 format=3 uid="uid://be7d8by2mekwb"]
+[gd_scene load_steps=7 format=3 uid="uid://be7d8by2mekwb"]
 
-[ext_resource type="Texture2D" uid="uid://ibdwqs8ag67m" path="res://Assets/Mobs/enemigo.png" id="1_m00cm"]
 [ext_resource type="Script" path="res://Escenas/Mobs/mob_base.gd" id="1_v0jg3"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ptgn6"]
-atlas = ExtResource("1_m00cm")
-region = Rect2(0, 0, 100, 100)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_1xo3p"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ptgn6")
-}],
-"loop": true,
-"name": &"idle",
-"speed": 5.0
-}]
+[ext_resource type="SpriteFrames" uid="uid://bs1moglfb8vql" path="res://Assets/Mobs/Base/base_sprite_frame.tres" id="2_sjdou"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n60dd"]
-size = Vector2(52, 57)
+size = Vector2(23, 26)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ii5fe"]
-size = Vector2(70, 65)
+size = Vector2(28, 31)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1iur3"]
+radius = 10.1005
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7vqvd"]
-radius = 359.555
+radius = 446.172
 
-[node name="Enemigo" type="CharacterBody2D"]
+[node name="Enemigo" type="CharacterBody2D" node_paths=PackedStringArray("animacion")]
 collision_layer = 16
 collision_mask = 8
 script = ExtResource("1_v0jg3")
-velocidad = 100.0
+animacion = NodePath("AnimatedSprite2D")
+flotar = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_1xo3p")
-animation = &"idle"
+sprite_frames = ExtResource("2_sjdou")
+animation = &"morir"
 
 [node name="Colisiones" type="CollisionShape2D" parent="."]
-position = Vector2(0, -1.5)
+position = Vector2(-0.5, -1)
 shape = SubResource("RectangleShape2D_n60dd")
 
 [node name="DeteccionGolpe" type="Area2D" parent="."]
@@ -46,9 +35,18 @@ collision_layer = 32
 collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DeteccionGolpe"]
-position = Vector2(2, -0.5)
+position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_ii5fe")
 debug_color = Color(0.819608, 0.168627, 0.290196, 0.643137)
+
+[node name="DeteccionRangoAtaque" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DeteccionRangoAtaque"]
+scale = Vector2(10, 10)
+shape = SubResource("CircleShape2D_1iur3")
+debug_color = Color(0.585782, 0.399581, 0.258552, 0.42)
 
 [node name="DeteccionJugador" type="Area2D" parent="."]
 collision_layer = 0
@@ -60,5 +58,7 @@ shape = SubResource("CircleShape2D_7vqvd")
 debug_color = Color(0, 0.65098, 0.0901961, 0.243137)
 
 [connection signal="body_entered" from="DeteccionGolpe" to="." method="_on_deteccion_golpe_body_entered"]
+[connection signal="body_entered" from="DeteccionRangoAtaque" to="." method="_on_deteccion_rango_ataque_body_entered"]
+[connection signal="body_exited" from="DeteccionRangoAtaque" to="." method="_on_deteccion_rango_ataque_body_exited"]
 [connection signal="body_entered" from="DeteccionJugador" to="." method="_on_deteccion_jugador_body_entered"]
 [connection signal="body_exited" from="DeteccionJugador" to="." method="_on_deteccion_jugador_body_exited"]

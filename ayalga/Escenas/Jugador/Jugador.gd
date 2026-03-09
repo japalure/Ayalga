@@ -32,7 +32,7 @@ func _ready() -> void:
 	posicion_y_inicial = global_position.y
 	
 func _process(_delta: float) -> void:
-	await get_tree().process_frame
+	pass
 	
 	
 func _physics_process(delta: float) -> void:	
@@ -55,6 +55,34 @@ func haciendo_culetazo() -> bool:
 
 func peso_actual() -> int:
 	return mochila.n_piedras()
+
+#calcula la distancia total descendida por el personaje
+func sumar_distancia_bajada() -> void:
+	var pos_y_actual = global_position.y
+	var nueva_distancia = pos_y_actual - posicion_y_inicial
+	#print("posicion_y_inicial : ", posicion_y_inicial, " pos_y_actual : ", pos_y_actual, " nueva_distancia : ", nueva_distancia) 
+	if nueva_distancia > distancia_recorrida:
+		distancia_recorrida = nueva_distancia
+		ControladorJuego.actualizar_distancia(distancia_recorrida)
+		#print("Distancia recorrida: %.2f px" % abs(distancia_recorrida)
+
+##------------------------------Animaciones------------------------------------##
+# Cambia la animación del personaje dependiendo de su estaso
+func cambio_animacion() -> void:
+	if !is_on_floor() && !golpeando:
+		animacion.play("saltar")
+	elif !is_on_floor() && golpeando:
+		animacion.play("culetazo")
+	elif velocity.x != 0:
+		animacion.play("correr")
+	else:
+		animacion.play("idle")
+	
+	# Cambiar horientación sprite izquierda y derecha	
+	if Input.is_action_pressed("derecha"):
+		animacion.flip_h = true
+	elif Input.is_action_pressed("izquierda"):
+		animacion.flip_h = false
 
 ##---------------------------Interacciones escenario---------------------------##
 func pasar_piedra_mochila(piedra_recogida) -> void:
@@ -129,24 +157,6 @@ func procesar_contacto_culetazo() ->void:
 		else:
 			terminar_culetazo()
 
-# Cambia la animación del personaje dependiendo de su estaso
-func cambio_animacion() -> void:
-	if !is_on_floor() && !golpeando:
-		animacion.play("saltar")
-	elif !is_on_floor() && golpeando:
-		animacion.play("culetazo")
-	elif velocity.x != 0:
-		animacion.play("correr")
-	else:
-		animacion.play("idle")
-	
-	# Cambiar horientación sprite izquierda y derecha	
-	if Input.is_action_pressed("derecha"):
-		animacion.flip_h = true
-	elif Input.is_action_pressed("izquierda"):
-		animacion.flip_h = false
-
-
 ##-----------------------------Manejo de daño-----------------------------##
 # Función llamada por la clase Mob
 func recibe_daño_mob(mob: Mob) -> void:
@@ -167,13 +177,3 @@ func muerte() -> void:
 	ControladorJuego.guardar_partida()
 	#_muerto = true
 	#animacion.stop()
-
-#calcula la distancia total descendida por el personaje
-func sumar_distancia_bajada() -> void:
-	var pos_y_actual = global_position.y
-	var nueva_distancia = pos_y_actual - posicion_y_inicial
-	#print("posicion_y_inicial : ", posicion_y_inicial, " pos_y_actual : ", pos_y_actual, " nueva_distancia : ", nueva_distancia) 
-	if nueva_distancia > distancia_recorrida:
-		distancia_recorrida = nueva_distancia
-		ControladorJuego.actualizar_distancia(distancia_recorrida)
-		#print("Distancia recorrida: %.2f px" % abs(distancia_recorrida))

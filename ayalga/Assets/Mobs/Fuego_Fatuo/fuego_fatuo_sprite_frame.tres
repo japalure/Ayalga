@@ -1,0 +1,115 @@
+[gd_resource type="SpriteFrames" load_steps=14 format=3 uid="uid://ys1g34vuwspb"]
+
+[ext_resource type="Texture2D" uid="uid://cy7f6tyisowxe" path="res://Assets/Mobs/Fuego_Fatuo/fuego_fatuo.png" id="1_mtm78"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rm3n1"]
+atlas = ExtResource("1_mtm78")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j2h81"]
+atlas = ExtResource("1_mtm78")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k3fju"]
+atlas = ExtResource("1_mtm78")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bir2s"]
+atlas = ExtResource("1_mtm78")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8xfsv"]
+atlas = ExtResource("1_mtm78")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i5h13"]
+atlas = ExtResource("1_mtm78")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8eqcg"]
+atlas = ExtResource("1_mtm78")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6lr1k"]
+atlas = ExtResource("1_mtm78")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t8bu1"]
+atlas = ExtResource("1_mtm78")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xhh74"]
+atlas = ExtResource("1_mtm78")
+region = Rect2(32, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_myqbs"]
+atlas = ExtResource("1_mtm78")
+region = Rect2(64, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4145i"]
+atlas = ExtResource("1_mtm78")
+region = Rect2(96, 64, 32, 32)
+
+[resource]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"ataque",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rm3n1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j2h81")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k3fju")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bir2s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8xfsv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i5h13")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8eqcg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6lr1k")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t8bu1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xhh74")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_myqbs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4145i")
+}],
+"loop": false,
+"name": &"morir",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"patrulla",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"perseguir",
+"speed": 5.0
+}]

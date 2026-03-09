@@ -25,6 +25,13 @@ func recalcular_posicion() -> void:
 	#vbox.position.y = - n_piedras() * (piedra_size_y + separacion)
 	pass
 
+# Activa la emisión de partículas cuando uan piedra es eliminada
+func emitir_particulas():
+	var particulas = $ParticulasCaida
+
+	particulas.emitting = true
+	particulas.restart()  # Limpia partículas previas
+
 
 ##-----------------------------Gestión de piedras-----------------------------##
 # Añade la piedra al vbox en primera posición y sube la posición del vbox para que se mantenga centrado
@@ -71,10 +78,15 @@ func eliminar_piedra(id:int = -1, pos:int = -1) -> void:
 	if id >= 0:
 		for piedra in vbox.get_children():
 			if piedra.id == id:
+				# Posición global de la piedra que cae (base de mochila)
+				emitir_particulas()
 				piedra.queue_free()
 				vbox.queue_sort()  # Reordena hijos
 	if pos >=0 and vbox.get_children().size() > pos:
 		#vbox.get_children()[pos].queue_free()
-		vbox.get_child(pos).queue_free()
+		var piedra_eliminar: Piedra = vbox.get_child(pos)
+
+		emitir_particulas()
+		piedra_eliminar.queue_free()
 		
 	recalcular_posicion()

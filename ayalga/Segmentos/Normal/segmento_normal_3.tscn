@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=4 uid="uid://ckw5iuqnr2il5"]
+[gd_scene load_steps=4 format=4 uid="uid://ckw5iuqnr2il5"]
 
 [ext_resource type="PackedScene" uid="uid://b28mcildpeh7k" path="res://Escenas/Mapas/Segmentos/SegmentoBase.tscn" id="1_oe48n"]
 [ext_resource type="PackedScene" uid="uid://dd0frket3ay0e" path="res://Escenas/Recursos/Piedras/PiedraBase.tscn" id="2_bfoxm"]
+[ext_resource type="PackedScene" uid="uid://bhe8hk71ew2o5" path="res://Escenas/Mobs/Enemigos/fuego_fatuo.tscn" id="3_5q4o3"]
 
 [node name="SegmentoBase" instance=ExtResource("1_oe48n")]
 
@@ -9,25 +10,55 @@
 tile_map_data = PackedByteArray("AAAHAAUAAAANAAUAAAAIAAQAAAANAAUAAAAJAAQAAAANAAUAAAAKAAQAAAANAAUAAAALAAUAAAANAAUAAAALAAYAAAANAAUAAAALAAcAAAANAAUAAAALAAgAAAANAAUAAAAKAAkAAAANAAUAAAAJAAkAAAANAAUAAAAIAAkAAAANAAUAAAALAAoAAAANAAUAAAALAAsAAAANAAUAAAALAAwAAAANAAUAAAALAA0AAAANAAUAAAAKAA4AAAANAAUAAAAJAA4AAAANAAUAAAAIAA4AAAANAAUAAAAHAA0AAAANAAUAAAAUAAEAAAABAAMAAAAUAAIAAAABAAMAAAAUAAMAAAABAAMAAAAUAAQAAAABAAMAAAAUAAUAAAABAAMAAAAUAAYAAAABAAMAAAAUAAcAAAABAAMAAAAUAAgAAAABAAMAAAAUAAkAAAABAAMAAAAUAAoAAAABAAMAAAAUAAsAAAABAAMAAAAUAAwAAAABAAMAAAAUAA0AAAABAAMAAAAUAA4AAAABAAMAAAAUAA8AAAABAAMAAAD//wEAAAABAAMAAAD//wIAAAABAAMAAAD//wMAAAABAAMAAAD//wQAAAABAAMAAAD//wUAAAABAAMAAAD//wYAAAABAAMAAAD//wcAAAABAAMAAAD//wgAAAABAAMAAAD//wkAAAABAAMAAAD//woAAAABAAMAAAD//wsAAAABAAMAAAD//wwAAAABAAMAAAD//w0AAAABAAMAAAD//w4AAAABAAMAAAD//w8AAAABAAMAAAD//xAAAAABAAMAAAD//xEAAAABAAMAAAD//xIAAAABAAMAAAD//xMAAAABAAMAAAD//xQAAAABAAMAAAD//xUAAAABAAMAAAAIAAgAAAAGAAYAAAAJAAgAAAAGAAYAAAAKAAgAAAAGAAYAAAAHAAQAAAAFAAYAAAALAAQAAAAFAAYAAAA=")
 
 [node name="PiedraBase" parent="ContenedorPiedras" index="0"]
-position = Vector2(70, 184)
+offset_left = 70.0
+offset_top = 184.0
+offset_right = 102.0
+offset_bottom = 216.0
 
 [node name="PiedraBase3" parent="ContenedorPiedras" index="1" instance=ExtResource("2_bfoxm")]
-position = Vector2(70, 379)
+offset_left = 70.0
+offset_top = 379.0
+offset_right = 102.0
+offset_bottom = 411.0
 
 [node name="PiedraBase4" parent="ContenedorPiedras" index="2" instance=ExtResource("2_bfoxm")]
-position = Vector2(73, 499)
+offset_left = 73.0
+offset_top = 499.0
+offset_right = 105.0
+offset_bottom = 531.0
 
 [node name="PiedraBase5" parent="ContenedorPiedras" index="3" instance=ExtResource("2_bfoxm")]
-position = Vector2(538, 167)
+offset_left = 538.0
+offset_top = 167.0
+offset_right = 570.0
+offset_bottom = 199.0
 
 [node name="PiedraBase6" parent="ContenedorPiedras" index="4" instance=ExtResource("2_bfoxm")]
-position = Vector2(539, 260)
+offset_left = 539.0
+offset_top = 260.0
+offset_right = 571.0
+offset_bottom = 292.0
 
 [node name="PiedraBase7" parent="ContenedorPiedras" index="5" instance=ExtResource("2_bfoxm")]
-position = Vector2(546, 365)
+offset_left = 546.0
+offset_top = 365.0
+offset_right = 578.0
+offset_bottom = 397.0
 
 [node name="PiedraBase8" parent="ContenedorPiedras" index="6" instance=ExtResource("2_bfoxm")]
-position = Vector2(536, 475)
+offset_left = 536.0
+offset_top = 475.0
+offset_right = 568.0
+offset_bottom = 507.0
 
 [node name="PiedraBase2" parent="ContenedorPiedras" index="7" instance=ExtResource("2_bfoxm")]
-position = Vector2(73, 287)
+offset_left = 73.0
+offset_top = 287.0
+offset_right = 105.0
+offset_bottom = 319.0
+
+[node name="FuegoFatuo" parent="." index="5" instance=ExtResource("3_5q4o3")]
+position = Vector2(232, 262)
+
+[node name="FuegoFatuo2" parent="." index="6" instance=ExtResource("3_5q4o3")]
+position = Vector2(374, 543)

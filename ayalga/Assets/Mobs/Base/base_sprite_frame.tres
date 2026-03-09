@@ -1,0 +1,87 @@
+[gd_resource type="SpriteFrames" load_steps=10 format=3 uid="uid://bs1moglfb8vql"]
+
+[ext_resource type="Texture2D" uid="uid://cklsdit8ese3d" path="res://Assets/Mobs/Base/base.png" id="1_u3sjd"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ln2v3"]
+atlas = ExtResource("1_u3sjd")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0rtt2"]
+atlas = ExtResource("1_u3sjd")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p77vn"]
+atlas = ExtResource("1_u3sjd")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wfcy1"]
+atlas = ExtResource("1_u3sjd")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_77civ"]
+atlas = ExtResource("1_u3sjd")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r1bxb"]
+atlas = ExtResource("1_u3sjd")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u1gwn"]
+atlas = ExtResource("1_u3sjd")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0nnq4"]
+atlas = ExtResource("1_u3sjd")
+region = Rect2(32, 64, 32, 32)
+
+[resource]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"ataque",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ln2v3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0rtt2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p77vn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wfcy1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_77civ")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r1bxb")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u1gwn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0nnq4")
+}],
+"loop": false,
+"name": &"morir",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"patrulla",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"perseguir",
+"speed": 5.0
+}]
