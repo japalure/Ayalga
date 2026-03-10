@@ -13,7 +13,8 @@ var jugador: Jugador #Esta referencia se resuelve cuando el jugador entra en ran
 var direccion := Vector2.LEFT
 var velocidad_actual = 0.0
 var en_espera: bool = true
-# varibles para flotar
+
+# Flotar
 @export var vuela: bool = false # Activar para mobs voladores
 @export var flotar_amplitud: float = 2.0
 @export var flotar_velocidad: float = 2.0
@@ -24,12 +25,15 @@ var tiempo_flotar := 0.0
 @onready var raycast_suelo: RayCast2D = $RayCastSuelo
 @onready var raycast_pared: RayCast2D = $RayCastPared
 
+# Navegación
+@onready var navegacion: NavigationAgent2D = $NavigationAgent2D
+var target: Node2D = null
 
 func _ready() -> void:
 	cambiar_animacion(0) #idle
 	velocidad_actual = velocidad
-
 	configurar_raycasts()
+	call_deferred("configurar_buscador") #navegación
 
 func _physics_process(delta: float) -> void:
 	if en_espera:
@@ -76,10 +80,8 @@ func cambiar_orientacion_a_jugador() -> void:
 
 ##-----------------------------Funciones de Movimiento-----------------------------##
 func movimiento_aire(_delta:float) -> void:
-	if jugador:
-		var dir = (jugador.global_position - global_position).normalized()
-		velocity = dir * velocidad_actual
-		await cambiar_animacion(1) # perseguir
+	buscar_camino(_delta) 
+	await cambiar_animacion(1) # perseguir
 
 # Patrulla por plataforma
 func patrullar(_delta: float) -> void:
@@ -87,7 +89,6 @@ func patrullar(_delta: float) -> void:
 		direccion.x *= -1
 		animacion.flip_h = direccion.x > 0
 	actualizar_raycasts()
-
 	velocity.x = direccion.x * velocidad_actual
 
 func gravedad(delta: float) -> void:
@@ -103,7 +104,8 @@ func flotando(delta: float) -> void:
 	var offset_y = sin(tiempo_flotar) * flotar_amplitud
 	velocity.y = offset_y * 10.0
 	move_and_slide()
-	
+
+		
 func iniciar_ataque() -> void:
 	cambiar_animacion(3) #ataque
 	velocidad_actual = velocidad_ataque
@@ -137,7 +139,7 @@ func _on_deteccion_jugador_body_entered(body: Node2D) -> void:
 
 # Detecta cuando el jugador sale del rango
 func _on_deteccion_jugador_body_exited(body: Node2D) -> void:
-	if body and body is Jugador:
+	if !body or body is not Jugador:
 		return
 	en_espera = true
 	cambiar_animacion(0) #idle
@@ -181,3 +183,19 @@ func actualizar_raycasts() -> void:
 	
 	raycast_suelo.force_raycast_update()
 	raycast_pared.force_raycast_update()
+
+##-----------------------------Funciones de Navegación---------------------------##
+func configurar_buscador() -> void:
+	await get_tree().process_frame
+	if jugador:
+		target = jugador
+
+func buscar_camino(_delta: float) -> void:
+	if jugador:
+		navegacion.target_position = jugador.global_position
+	
+	if navegacion.is_navigation_finished():
+		return
+	var pos_actual = global_position
+	var pos_siguiente = navegacion.get_next_path_position()
+	velocity = pos_actual.direction_to(pos_siguiente) * velocidad_actual

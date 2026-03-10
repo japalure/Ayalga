@@ -18,12 +18,13 @@ const TILE_SOURCE_ID := 0
 const TILE_ATLAS_A_CAMBIAR := Vector2i(1, 3)
 @export var tile_map_nivel: TileMapLayer #nodo referencia del tilemap
 @export var array_tiles_relleno: Array[Vector2i] #coordenadas de los tiles a rellenar
-
+@onready var tile_navegable: TileMapLayer = $Navegable 
 
 func _ready() -> void:
 	#info()
 	await get_tree().process_frame
 	reemplazar_tiles()
+	tile_navegable.visible = false
 	
 func _process(_delta: float) -> void:
 	pass
