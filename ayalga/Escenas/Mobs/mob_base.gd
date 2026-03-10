@@ -2,36 +2,50 @@ class_name Mob
 extends CharacterBody2D
 
 var ContenedorMob: ContenedorMobs #Esta referencia se resuelve dentro de ContenedorPiedras
-var jugador: Jugador
+var jugador: Jugador #Esta referencia se resuelve cuando el jugador entra en rango
 
 @export var animacion: AnimatedSprite2D
 
-@export var velocidad: float = 100.0
-@export var velocidad_ataque: float = 145.0
+@export var velocidad: float = 50.0
+@export var velocidad_ataque: float = 70.0
 @export var daño: int = 1        # piedras que quita al jugador
 @export var resistencia: int = 1    # peso mínimo del jugador para matarlo con culetazo
-
+var direccion := Vector2.LEFT
+var velocidad_actual = 0.0
+var en_espera: bool = true
 # varibles para flotar
-@export var flotar: bool = false # Activar para mobs voladores
+@export var vuela: bool = false # Activar para mobs voladores
 @export var flotar_amplitud: float = 2.0
 @export var flotar_velocidad: float = 2.0
 var tiempo_flotar := 0.0
 
-var direccion := Vector2.LEFT
-var velocidad_actual = 0.0
-var en_espera: bool = true
+# Raycast
+@export var distancia_raycast: float = 12.0
+@onready var raycast_suelo: RayCast2D = $RayCastSuelo
+@onready var raycast_pared: RayCast2D = $RayCastPared
+
 
 func _ready() -> void:
 	cambiar_animacion(0) #idle
 	velocidad_actual = velocidad
 
+	configurar_raycasts()
+
 func _physics_process(delta: float) -> void:
 	if en_espera:
 		return
-	movimiento(delta)
+	if vuela:
+		movimiento_aire(delta)
+		move_and_slide()
+		flotando(delta)
+	else:
+		patrullar(delta)
+		gravedad(delta)
+		move_and_slide()
+		
 	cambiar_orientacion_a_jugador()
-	flotando(delta)
-	move_and_slide()
+	
+	
 	
 ##-------------------------------Funciones de estado-------------------------------##
 func cambiar_animacion(id:int) -> void:
@@ -61,28 +75,55 @@ func cambiar_orientacion_a_jugador() -> void:
 	animacion.flip_h = direccion_x > 0
 
 ##-----------------------------Funciones de Movimiento-----------------------------##
-func movimiento(_delta:float) -> void:
+func movimiento_aire(_delta:float) -> void:
 	if jugador:
 		var dir = (jugador.global_position - global_position).normalized()
 		velocity = dir * velocidad_actual
 		await cambiar_animacion(1) # perseguir
 
+# Patrulla por plataforma
+func patrullar(_delta: float) -> void:
+	if not raycast_suelo.is_colliding() or raycast_pared.is_colliding():
+		direccion.x *= -1
+		animacion.flip_h = direccion.x > 0
+	actualizar_raycasts()
+
+	velocity.x = direccion.x * velocidad_actual
+
+func gravedad(delta: float) -> void:
+	if not is_on_floor():
+		velocity += get_gravity() * delta
+
 # Mueve al mob para que parezca que flote 
 func flotando(delta: float) -> void:
-	if !flotar:
+	if !vuela:
 		return
 	
 	tiempo_flotar += delta * flotar_velocidad
 	var offset_y = sin(tiempo_flotar) * flotar_amplitud
-	velocity.y = offset_y * 10.0 
+	velocity.y = offset_y * 10.0
+	move_and_slide()
 	
 func iniciar_ataque() -> void:
 	cambiar_animacion(3) #ataque
-	velocidad_actual = velocidad
+	velocidad_actual = velocidad_ataque
 
 func finalizar_ataque() -> void:
 	cambiar_animacion(1) #ataque
-	velocidad_actual = velocidad_ataque
+	velocidad_actual = velocidad
+
+##-----------------------------Funciones de Daño-----------------------------##
+func recibe_daño(body: Node2D) ->void:
+	if body is Jugador:
+		if body.peso_actual() >= resistencia:
+			muerte()
+		else:
+			body.rebotar()
+
+func muerte() -> void:
+	$Colisiones.queue_free() #Para que el jugador no se quede encima
+	await cambiar_animacion(2) # morir y esperar a que termine la animación
+	queue_free()
 
 ##-----------------------------Funciones de Áreas-----------------------------##
 # Detecta cuando el jugador está en rango
@@ -122,14 +163,21 @@ func _on_deteccion_golpe_body_entered(body: Node2D) -> void:
 			#print ("jugador recibe daño")
 			body.recibe_daño_mob(self)
 
-##-----------------------------Funciones de Daño-----------------------------##
-func recibe_daño(body: Node2D) ->void:
-	if body is Jugador:
-		if body.peso_actual() >= resistencia:
-			muerte()
-		else:
-			body.rebotar()
+##-----------------------------Funciones de Raycast---------------------------##
+func configurar_raycasts() -> void:
+	raycast_suelo.target_position.y = distancia_raycast
+	raycast_pared.target_position.x = distancia_raycast
+	actualizar_raycasts()
 
-func muerte() -> void:
-	await cambiar_animacion(2) # morir y esperar a que termine la animación
-	queue_free()
+# Actualiza orientación de raycasts
+func actualizar_raycasts() -> void:
+	var dir_sign :float = sign(direccion.x)
+	if dir_sign == 0:
+		dir_sign = -1
+	
+	raycast_suelo.target_position.x = abs(raycast_suelo.target_position.x) * dir_sign
+	raycast_suelo.target_position.y = 32 
+	raycast_pared.target_position.x = abs(raycast_pared.target_position.x) * dir_sign
+	
+	raycast_suelo.force_raycast_update()
+	raycast_pared.force_raycast_update()

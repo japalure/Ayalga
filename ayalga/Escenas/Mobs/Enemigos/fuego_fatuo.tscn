@@ -4,6 +4,7 @@
 [ext_resource type="SpriteFrames" uid="uid://ys1g34vuwspb" path="res://Assets/Mobs/Fuego_Fatuo/fuego_fatuo_sprite_frame.tres" id="2_ed6ay"]
 
 [node name="FuegoFatuo" instance=ExtResource("1_6s7e0")]
+vuela = true
 
 [node name="AnimatedSprite2D" parent="." index="0"]
 sprite_frames = ExtResource("2_ed6ay")

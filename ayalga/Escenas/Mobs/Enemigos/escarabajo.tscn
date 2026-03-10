@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://v5uenlu62sna"]
+
+[ext_resource type="PackedScene" uid="uid://be7d8by2mekwb" path="res://Escenas/Mobs/MobBase.tscn" id="1_mjp2i"]
+[ext_resource type="Script" path="res://Escenas/Mobs/Enemigos/escarabajo.gd" id="2_7ifgi"]
+
+[node name="Escarabajo" instance=ExtResource("1_mjp2i")]
+script = ExtResource("2_7ifgi")
