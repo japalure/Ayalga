@@ -24,7 +24,7 @@ func _ready() -> void:
 	#info()
 	await get_tree().process_frame
 	reemplazar_tiles()
-	tile_navegable.visible = false
+	#tile_navegable.visible = false
 	
 func _process(_delta: float) -> void:
 	pass
