@@ -20,6 +20,7 @@ collision_layer = 34
 collision_mask = 17
 script = ExtResource("1_v0jg3")
 animacion = NodePath("AnimatedSprite2D")
+vuela = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = ExtResource("2_sjdou")
@@ -63,6 +64,9 @@ collision_mask = 19
 [node name="RayCastSuelo" type="RayCast2D" parent="."]
 target_position = Vector2(0, 32)
 collision_mask = 19
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+avoidance_enabled = true
 
 [connection signal="body_entered" from="DeteccionGolpe" to="." method="_on_deteccion_golpe_body_entered"]
 [connection signal="body_entered" from="DeteccionRangoAtaque" to="." method="_on_deteccion_rango_ataque_body_entered"]
