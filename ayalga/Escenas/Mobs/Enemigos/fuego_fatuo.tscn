@@ -1,10 +1,42 @@
-[gd_scene load_steps=3 format=3 uid="uid://bhe8hk71ew2o5"]
+[gd_scene load_steps=7 format=3 uid="uid://bhe8hk71ew2o5"]
 
 [ext_resource type="PackedScene" uid="uid://be7d8by2mekwb" path="res://Escenas/Mobs/MobBase.tscn" id="1_6s7e0"]
 [ext_resource type="SpriteFrames" uid="uid://ys1g34vuwspb" path="res://Assets/Mobs/Fuego_Fatuo/fuego_fatuo_sprite_frame.tres" id="2_ed6ay"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xdsej"]
+resource_local_to_scene = true
+size = Vector2(15, 21.4911)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rhjab"]
+resource_local_to_scene = true
+size = Vector2(18, 22)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_buoer"]
+resource_local_to_scene = true
+radius = 10.1005
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lptmv"]
+resource_local_to_scene = true
+radius = 446.172
+
 [node name="FuegoFatuo" instance=ExtResource("1_6s7e0")]
-vuela = true
 
 [node name="AnimatedSprite2D" parent="." index="0"]
 sprite_frames = ExtResource("2_ed6ay")
+frame_progress = 0.0
+
+[node name="Colisiones" parent="." index="1"]
+position = Vector2(0.5, 2.49999)
+shape = SubResource("RectangleShape2D_xdsej")
+
+[node name="CollisionShape2D" parent="DeteccionGolpe" index="0"]
+position = Vector2(0, 0)
+shape = SubResource("RectangleShape2D_rhjab")
+
+[node name="CollisionShape2D" parent="DeteccionRangoAtaque" index="0"]
+shape = SubResource("CircleShape2D_buoer")
+
+[node name="CollisionShape2D" parent="DeteccionJugador" index="0"]
+scale = Vector2(1.5, 1.482)
+shape = SubResource("CircleShape2D_lptmv")
+debug_color = Color(0, 0.65098, 0.0901961, 0.121569)

@@ -3,39 +3,44 @@
 [ext_resource type="Script" path="res://Escenas/Mobs/mob_base.gd" id="1_v0jg3"]
 [ext_resource type="SpriteFrames" uid="uid://bs1moglfb8vql" path="res://Assets/Mobs/Base/base_sprite_frame.tres" id="2_sjdou"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_n60dd"]
-size = Vector2(21, 25)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_or4ww"]
+resource_local_to_scene = true
+size = Vector2(20, 27.2221)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ii5fe"]
-size = Vector2(28, 31)
+resource_local_to_scene = true
+size = Vector2(23, 22)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1iur3"]
+resource_local_to_scene = true
 radius = 10.1005
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7vqvd"]
+resource_local_to_scene = true
 radius = 446.172
 
-[node name="Enemigo" type="CharacterBody2D" node_paths=PackedStringArray("animacion")]
+[node name="Enemigo" type="CharacterBody2D"]
 collision_layer = 34
 collision_mask = 17
 script = ExtResource("1_v0jg3")
-animacion = NodePath("AnimatedSprite2D")
 vuela = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = ExtResource("2_sjdou")
-animation = &"morir"
+animation = &"ataque"
+frame_progress = 0.820006
 
 [node name="Colisiones" type="CollisionShape2D" parent="."]
-position = Vector2(0.5, -0.5)
-shape = SubResource("RectangleShape2D_n60dd")
+position = Vector2(0, 0.5)
+scale = Vector2(1, 0.697961)
+shape = SubResource("RectangleShape2D_or4ww")
 
 [node name="DeteccionGolpe" type="Area2D" parent="."]
 collision_layer = 32
 collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DeteccionGolpe"]
-position = Vector2(0, -0.5)
+position = Vector2(0.5, 0)
 shape = SubResource("RectangleShape2D_ii5fe")
 debug_color = Color(0.819608, 0.168627, 0.290196, 0.643137)
 
@@ -53,7 +58,7 @@ collision_layer = 0
 collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DeteccionJugador"]
-scale = Vector2(0.694814, 0.687249)
+scale = Vector2(1.517, 1.5)
 shape = SubResource("CircleShape2D_7vqvd")
 debug_color = Color(0, 0.65098, 0.0901961, 0.243137)
 

@@ -7,8 +7,9 @@ enum TipoSegmento {
 	CHECKPOINT, 
 	TIENDA  
 }
-
-var id_segmento: int = 0
+# Identificador único del segmento mientras dure la sesión
+static var next_id: int = 0
+var id: int
 @export var contenedor_piedras: ContenedorPiedras
 @export var contenedor_mob: ContenedorMobs
 @export var tipo: TipoSegmento = TipoSegmento.NORMAL
@@ -22,15 +23,14 @@ const TILE_ATLAS_A_CAMBIAR := Vector2i(1, 3)
 
 func _ready() -> void:
 	#info()
+	id = next_id
+	next_id += 1
 	await get_tree().process_frame
 	reemplazar_tiles()
-	#tile_navegable.visible = false
+	tile_navegable.visible = false
 	
 func _process(_delta: float) -> void:
 	pass
-
-func setup(id: int):
-	id_segmento = id
 
 
 func reemplazar_tiles():
@@ -66,6 +66,6 @@ func reemplazar_tiles():
 			) 
 
 func info() -> void:
-	print ("Segmento id: " + str(id_segmento))
+	print ("Segmento id: " + str(id))
 	print ("	" + str(contenedor_piedras.total_piedras) + " piedras")
 	print ("	" + str(contenedor_mob.total_mob) + " mobs")

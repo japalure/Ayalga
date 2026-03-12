@@ -38,7 +38,7 @@ func _ready() -> void:
 func recogida(_body):
 	if en_mochila:
 		return
-	await self.no_recogible()
+	#await self.no_recogible()
 	
 	if _body is Jugador:
 		await _body.pasar_piedra_mochila(self)

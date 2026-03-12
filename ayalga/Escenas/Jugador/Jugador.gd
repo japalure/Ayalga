@@ -152,7 +152,7 @@ func procesar_contacto_culetazo() ->void:
 		var objeto = collision.get_collider()
 		#print("Golpee: ", objeto.name)
 		
-		if objeto.name == 'Enemigo' and  collision.get_normal() == Vector2.UP:
+		if objeto and objeto.name == 'Enemigo' and  collision.get_normal() == Vector2.UP:
 			rebotar()
 		else:
 			terminar_culetazo()

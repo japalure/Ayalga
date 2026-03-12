@@ -38,7 +38,7 @@ func emitir_particulas():
 func anadir_piedra(piedra_recogida: Piedra) -> void:
 	if n_piedras() < tam_max:
 		var nueva_piedra = duplicar_piedra(piedra_recogida)
-
+		piedra_recogida.no_recogible()
 		
 		vbox.call_deferred("add_child", nueva_piedra)
 		vbox.call_deferred("move_child", nueva_piedra, 0)

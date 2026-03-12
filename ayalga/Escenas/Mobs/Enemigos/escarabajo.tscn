@@ -1,7 +1,45 @@
-[gd_scene load_steps=3 format=3 uid="uid://v5uenlu62sna"]
+[gd_scene load_steps=8 format=3 uid="uid://v5uenlu62sna"]
 
 [ext_resource type="PackedScene" uid="uid://be7d8by2mekwb" path="res://Escenas/Mobs/MobBase.tscn" id="1_mjp2i"]
 [ext_resource type="Script" path="res://Escenas/Mobs/Enemigos/escarabajo.gd" id="2_7ifgi"]
+[ext_resource type="SpriteFrames" uid="uid://c3mausdr1dxpn" path="res://Assets/Mobs/Escarabajo/escarabajo_sprite_frame.tres" id="3_0md6h"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_urqhn"]
+resource_local_to_scene = true
+size = Vector2(21, 32.9531)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l1p0d"]
+resource_local_to_scene = true
+size = Vector2(23, 29)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_w7cdn"]
+resource_local_to_scene = true
+radius = 10.1005
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2jobf"]
+resource_local_to_scene = true
+radius = 446.172
 
 [node name="Escarabajo" instance=ExtResource("1_mjp2i")]
 script = ExtResource("2_7ifgi")
+mirar_jugador = false
+vuela = false
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+sprite_frames = ExtResource("3_0md6h")
+animation = &"ataque"
+
+[node name="Colisiones" parent="." index="1"]
+position = Vector2(-0.5, 1.5)
+shape = SubResource("RectangleShape2D_urqhn")
+
+[node name="CollisionShape2D" parent="DeteccionGolpe" index="0"]
+position = Vector2(-0.5, 0.5)
+shape = SubResource("RectangleShape2D_l1p0d")
+
+[node name="CollisionShape2D" parent="DeteccionRangoAtaque" index="0"]
+shape = SubResource("CircleShape2D_w7cdn")
+
+[node name="CollisionShape2D" parent="DeteccionJugador" index="0"]
+position = Vector2(-2, 2)
+shape = SubResource("CircleShape2D_2jobf")

@@ -1,0 +1,157 @@
+[gd_resource type="SpriteFrames" load_steps=20 format=3 uid="uid://c3mausdr1dxpn"]
+
+[ext_resource type="Texture2D" uid="uid://cv8tnwtm2hoce" path="res://Assets/Mobs/Escarabajo/escarabajo.png" id="1_enpac"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c786j"]
+atlas = ExtResource("1_enpac")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6d2d2"]
+atlas = ExtResource("1_enpac")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e4a0e"]
+atlas = ExtResource("1_enpac")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qlbuk"]
+atlas = ExtResource("1_enpac")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gnblv"]
+atlas = ExtResource("1_enpac")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lru7n"]
+atlas = ExtResource("1_enpac")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tfumc"]
+atlas = ExtResource("1_enpac")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jj6ec"]
+atlas = ExtResource("1_enpac")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_utvip"]
+atlas = ExtResource("1_enpac")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_utj22"]
+atlas = ExtResource("1_enpac")
+region = Rect2(32, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6fwd1"]
+atlas = ExtResource("1_enpac")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1655c"]
+atlas = ExtResource("1_enpac")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qls5c"]
+atlas = ExtResource("1_enpac")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wmy26"]
+atlas = ExtResource("1_enpac")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hs887"]
+atlas = ExtResource("1_enpac")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_unqya"]
+atlas = ExtResource("1_enpac")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3a7pv"]
+atlas = ExtResource("1_enpac")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iqecy"]
+atlas = ExtResource("1_enpac")
+region = Rect2(96, 0, 32, 32)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c786j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6d2d2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e4a0e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qlbuk")
+}],
+"loop": true,
+"name": &"ataque",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gnblv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lru7n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tfumc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jj6ec")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_utvip")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_utj22")
+}],
+"loop": false,
+"name": &"morir",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6fwd1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1655c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qls5c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wmy26")
+}],
+"loop": true,
+"name": &"patrulla",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hs887")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_unqya")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3a7pv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iqecy")
+}],
+"loop": true,
+"name": &"perseguir",
+"speed": 5.0
+}]
