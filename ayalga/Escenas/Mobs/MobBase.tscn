@@ -28,7 +28,7 @@ vuela = true
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = ExtResource("2_sjdou")
 animation = &"ataque"
-frame_progress = 0.820006
+frame_progress = 0.384128
 
 [node name="Colisiones" type="CollisionShape2D" parent="."]
 position = Vector2(0, 0.5)

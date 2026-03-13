@@ -23,11 +23,12 @@ radius = 446.172
 [node name="Escarabajo" instance=ExtResource("1_mjp2i")]
 script = ExtResource("2_7ifgi")
 mirar_jugador = false
+patrullar = true
 vuela = false
 
 [node name="AnimatedSprite2D" parent="." index="0"]
 sprite_frames = ExtResource("3_0md6h")
-animation = &"ataque"
+frame_progress = 0.0
 
 [node name="Colisiones" parent="." index="1"]
 position = Vector2(-0.5, 1.5)

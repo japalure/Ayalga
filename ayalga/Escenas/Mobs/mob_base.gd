@@ -4,17 +4,21 @@ extends CharacterBody2D
 var ContenedorMob: ContenedorMobs #Esta referencia se resuelve dentro de ContenedorPiedras
 var jugador: Jugador #Esta referencia se resuelve cuando el jugador entra en rango
 
-@onready var animacion: AnimatedSprite2D = $AnimatedSprite2D
 
-enum EstadoMob { IDLE, PATRULLA, PERSEGUIR, ATAQUE, MUERTO }
+
+enum EstadoMob { IDLE, PATRULLA, PERSEGUIR, ATAQUE, REBOTANDO, MUERTO }
 @export var estado_actual: EstadoMob = EstadoMob.IDLE
 @export var velocidad: float = 50.0
 @export var velocidad_ataque: float = 70.0
 @export var daño: int = 1        # piedras que quita al jugador
 @export var resistencia: int = 1    # peso mínimo del jugador para matarlo con culetazo
 @export var mirar_jugador: bool = true # el sprite mirará siempre hacia el jugador
+@export var patrullar: bool = false
 var direccion := Vector2.LEFT
 var velocidad_actual = 0.0
+
+# Sprite
+@onready var animacion: AnimatedSprite2D = $AnimatedSprite2D
 
 # Flotar
 @export var vuela: bool = false # Activar para mobs voladores
@@ -37,11 +41,7 @@ func _ready() -> void:
 	call_deferred("configurar_buscador") #navegación
 
 func _physics_process(delta: float) -> void:
-	if !vuela:
-		gravedad(delta)
-	else:
-		flotando(delta)
-	
+
 	match estado_actual:
 		EstadoMob.IDLE:
 			maquina_idle(delta)
@@ -51,16 +51,26 @@ func _physics_process(delta: float) -> void:
 			maquina_perseguir(delta)
 		EstadoMob.ATAQUE:
 			maquina_ataque(delta)
+		EstadoMob.REBOTANDO:
+			maquina_rebote()
 		EstadoMob.MUERTO:
 			return
-	
-	cambiar_orientacion_a_jugador()
 	move_and_slide()
+	
+	if mirar_jugador:
+		cambiar_orientacion_a_jugador()
+	
+	if vuela:
+		flotando(delta)
+	else:
+		gravedad(delta)
 	
 	
 ##-------------------------------Funciones de estado-------------------------------##
 func cambiar_estado(nuevo_estado: EstadoMob) -> void:
 	#print("cambio de ", estado_actual, " a ", nuevo_estado)
+	if estado_actual == EstadoMob.MUERTO:
+		return
 	estado_actual = nuevo_estado
 	match estado_actual:
 		EstadoMob.IDLE:      animacion.play("idle")
@@ -74,35 +84,44 @@ func cambiar_estado(nuevo_estado: EstadoMob) -> void:
 func maquina_idle(_delta: float) -> void:
 	velocity = Vector2.ZERO
 
-func maquina_patrulla(delta: float) -> void:
+func maquina_patrulla(_delta: float) -> void:
 	if vuela:
-		pass
+		patrullar_aire()
 	else:
-		patrullar_suelo(delta) 
+		patrullar_suelo() 
 
-func maquina_perseguir(delta: float) -> void:
+func maquina_perseguir(_delta: float) -> void:
 	if vuela:
-		perseguir_aire(delta)
+		perseguir_aire()
 	else:
-		patrullar_suelo(delta) # A futuro perseguir_suelo
+		perseguir_suelo()
 
 func maquina_ataque(_delta: float) -> void:
 	iniciar_ataque()
-	if vuela:
-		perseguir_aire(_delta)
-	else:
-		patrullar_suelo(_delta) # A futuro perseguir_suelo
-
+	
+func maquina_rebote() -> void:
+	rebotar()
+	
 func maquina_muerto() -> void:
 	muerte()
 ##-----------------------------Funciones de Movimiento-----------------------------##
-func perseguir_aire(_delta:float) -> void:
+func perseguir_aire() -> void:
 	var siguiente_direccion: Vector2 = buscar_camino(jugador)
 	velocity = siguiente_direccion * velocidad_actual 
 
+func perseguir_suelo() -> void:
+	var siguiente_direccion: Vector2 = buscar_camino(jugador)
+	velocity.x = siguiente_direccion.x * velocidad_actual 
 
+func patrullar_aire() -> void:
+	if raycast_pared.is_colliding() or raycast_suelo.is_colliding():
+		direccion.x *= -1
+		animacion.flip_h = direccion.x > 0
+	actualizar_raycasts()
+	velocity.x = direccion.x * velocidad_actual
+	
 # Patrulla por plataforma
-func patrullar_suelo(_delta: float) -> void:
+func patrullar_suelo() -> void:
 	if not raycast_suelo.is_colliding() or raycast_pared.is_colliding():
 		direccion.x *= -1
 		animacion.flip_h = direccion.x > 0
@@ -125,6 +144,16 @@ func flotando(delta: float) -> void:
 		
 func iniciar_ataque() -> void:
 	velocidad_actual = velocidad_ataque
+	if patrullar:
+		if vuela:
+			patrullar_aire()
+		else:
+			patrullar_suelo() # A futuro perseguir_suelo
+	else:
+		if vuela:
+			perseguir_aire()
+		else:
+			perseguir_suelo() # A futuro perseguir_suelo
 
 func finalizar_ataque() -> void:
 	velocidad_actual = velocidad
@@ -138,6 +167,25 @@ func cambiar_orientacion_a_jugador() -> void:
 	# Si está a la derecha, flip_h = true (mira izquierda)
 	# Si está a la izquierda, flip_h = false (mira derecha)
 	animacion.flip_h = direccion_x > 0
+
+# Rebote según posición del jugador
+func rebotar() -> void:
+	if not jugador:
+		return
+	
+	var direccion_rebote: Vector2
+	
+	# Relación posición enemigo vs jugador
+	var rel_x = sign(global_position.x - jugador.global_position.x)
+	var rel_y = sign(global_position.y - jugador.global_position.y)
+	
+	# Rebote OPUESTO a la posición del jugador
+	direccion_rebote.x = -rel_x  # si jugador a la derecha → rebota izquierda
+	direccion_rebote.y = -rel_y  # si jugador arriba → rebota abajo
+	
+	# Fuerza de rebote
+	velocity = direccion_rebote * -100
+
 ##-----------------------------Funciones de Daño-----------------------------##
 func recibe_daño(body: Node2D) ->void:
 	if body is Jugador:
@@ -155,14 +203,17 @@ func muerte() -> void:
 	queue_free()
 
 ##-----------------------------Funciones de Áreas-----------------------------##
-# Detecta cuando el jugador está en rango
+# Detecta cuando el jugador está en rango, empezar movimiento y dejar de hacer animación idle
 func _on_deteccion_jugador_body_entered(body: Node2D) -> void:
 	if !body or body is not Jugador:
 		return
 	#print ("jugador está en rango de mob")
 	jugador = body
-	cambiar_estado(EstadoMob.PERSEGUIR)
-	# Empezar movimiento y dejar de hacer animación idle
+
+	if patrullar:
+		cambiar_estado(EstadoMob.PATRULLA)
+	else:
+		cambiar_estado(EstadoMob.PERSEGUIR)
 
 # Detecta cuando el jugador sale del rango
 func _on_deteccion_jugador_body_exited(body: Node2D) -> void:
@@ -175,14 +226,18 @@ func _on_deteccion_jugador_body_exited(body: Node2D) -> void:
 func _on_deteccion_rango_ataque_body_entered(body: Node2D) -> void:
 	if !body or body is not Jugador:
 		return
-	cambiar_estado(EstadoMob.ATAQUE)
+	if patrullar:
+		cambiar_estado(EstadoMob.PATRULLA)
+	else:
+		cambiar_estado(EstadoMob.ATAQUE)
 
 # Detecta si el jugador sale del rango de ataque
 func _on_deteccion_rango_ataque_body_exited(body: Node2D) -> void:
 	if !body or body is not Jugador:
 		return
-	finalizar_ataque()
-	cambiar_estado(EstadoMob.PERSEGUIR)
+	if !patrullar:
+		finalizar_ataque()
+		cambiar_estado(EstadoMob.PERSEGUIR)
 
 # Detecta cuando colisiona con un jugador
 func _on_deteccion_golpe_body_entered(body: Node2D) -> void:
@@ -194,6 +249,10 @@ func _on_deteccion_golpe_body_entered(body: Node2D) -> void:
 		else:
 			#print ("jugador recibe daño")
 			body.recibe_daño_mob(self)
+			var estado_anterior = estado_actual
+			cambiar_estado(EstadoMob.REBOTANDO)
+			await get_tree().create_timer(0.3).timeout
+			cambiar_estado(estado_anterior)
 
 ##-----------------------------Funciones de Raycast---------------------------##
 func configurar_raycasts() -> void:
